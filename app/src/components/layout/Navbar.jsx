@@ -11,7 +11,7 @@ function Navbar() {
       </Link>
       <h1>Controle de Caixa</h1>
       <ul>
-        <Link to="/">
+        <Link to="/products">
           <li>Produtos</li>
         </Link>
         <Link to="/">

@@ -1,0 +1,13 @@
+.products_container {
+  padding: 20px;
+  /* background-color: aqua; */
+}
+.products_container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.products_buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
