@@ -8,3 +8,6 @@
   padding: 8px;
   border-radius: 10px;
 }
+.input_container label {
+  font-weight: bold;
+}

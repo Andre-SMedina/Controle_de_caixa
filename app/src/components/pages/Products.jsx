@@ -1,27 +1,28 @@
 import { useState } from "react";
 
 import Button from "../layout/Button";
-import RegisterForm from "../products/RegisterForm";
+import ProductsForm from "../products/ProductsForm";
 import styles from "./Products.module.css";
+import DataBase from "../Functions";
 
 function Products() {
   const [showRegister, setShowRegister] = useState(false);
 
   function createPost(product) {
-    console.log("nivel1", product);
+    DataBase(product, "POST");
   }
 
-  function alter() {
+  function toggle() {
     setShowRegister(!showRegister);
   }
   return (
     <div className={styles.products_container}>
       <h1>Produtos</h1>
       <div className={styles.products_buttons}>
-        <Button func={alter} text="Cadastrar" />
+        <Button func={toggle} text="Cadastrar" />
         <Button text="Encontrar" />
       </div>
-      {showRegister && <RegisterForm handleSubmit={createPost} />}
+      {showRegister && <ProductsForm handleSubmit={createPost} />}
     </div>
   );
 }

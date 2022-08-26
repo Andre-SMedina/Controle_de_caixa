@@ -1,3 +1,20 @@
 {
-  "products": ["bolo", "pão", "leite", "picolé"]
+  "Products": [
+    {
+      "value": "2.5",
+      "product": "pao",
+      "amount": "50",
+      "brand": "bom",
+      "description": "integral",
+      "id": 2
+    },
+    {
+      "value": "4.5",
+      "product": "leite",
+      "amount": "500",
+      "brand": "itambé",
+      "description": "integral",
+      "id": 3
+    }
+  ]
 }
