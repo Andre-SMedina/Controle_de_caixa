@@ -1,4 +1,5 @@
 .products_container {
+  width: 100%;
   padding: 20px;
   /* background-color: aqua; */
 }
@@ -10,4 +11,14 @@
   display: flex;
   gap: 10px;
   justify-content: center;
+}
+.products_forms {
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  /* background-color: aqua; */
+}
+.products_container .products_forms h1 {
+  margin: 0;
 }

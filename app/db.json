@@ -15,6 +15,14 @@
       "brand": "itambé",
       "description": "integral",
       "id": 3
+    },
+    {
+      "product": "biscoito",
+      "amount": "3",
+      "brand": "bom",
+      "description": "Fiação",
+      "value": "4",
+      "id": 4
     }
   ]
 }

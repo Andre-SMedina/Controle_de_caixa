@@ -1,6 +1,13 @@
 import styles from "./Input.module.css";
 
-function Input({ type, name, text, placeholder, handleOnChange, value }) {
+function InputRequired({
+  type,
+  name,
+  text,
+  placeholder,
+  handleOnChange,
+  value,
+}) {
   return (
     <div className={styles.input_container}>
       <label htmlFor={name}>{text}</label>
@@ -9,10 +16,11 @@ function Input({ type, name, text, placeholder, handleOnChange, value }) {
         name={name}
         placeholder={placeholder}
         onChange={handleOnChange}
-        // value={value}
+        value={value}
+        required
       />
     </div>
   );
 }
 
-export default Input;
+export default InputRequired;

@@ -26,7 +26,7 @@ function ProductsForm({ handleSubmit }) {
 
   return (
     <form onSubmit={submit} className={styles.form_container}>
-      <h1>Cadastro</h1>
+      <h1>Encontrar</h1>
       <InputRequired
         type="text"
         name="product"
@@ -34,14 +34,6 @@ function ProductsForm({ handleSubmit }) {
         placeholder="Insira o nome do produto"
         handleOnChange={handleChange}
         value={products.product ? products.product : ""}
-      />
-      <Input
-        type="number"
-        name="amount"
-        text="Quantidade"
-        placeholder="Insira a quantidade do produto"
-        handleOnChange={handleChange}
-        value={products.amount ? products.amount : ""}
       />
       <Input
         type="text"
@@ -59,16 +51,9 @@ function ProductsForm({ handleSubmit }) {
         handleOnChange={handleChange}
         value={products.description ? products.description : ""}
       />
-      <Input
-        type="number"
-        name="value"
-        text="Valor"
-        placeholder="Insira a valor do produto"
-        handleOnChange={handleChange}
-        value={products.value ? products.value : ""}
-      />
+
       <div className={styles.form_buttons}>
-        <SubmitButton text="Cadastrar" />
+        <SubmitButton text="Buscar" />
         <Button func={handleReset} text="Limpar" />
       </div>
     </form>

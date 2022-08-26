@@ -2,9 +2,7 @@ import styles from "./Button.module.css";
 
 function Button({ func, text }) {
   return (
-    <button className={styles.btn} onClick={func}>
-      {text}
-    </button>
+    <input className={styles.btn} type="button" value={text} onClick={func} />
   );
 }
 

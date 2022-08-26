@@ -1,6 +1,10 @@
 .form_container {
-  max-width: 500px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+.form_buttons {
+  display: flex;
+  justify-content: space-between;
 }
