@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import Input from "../form/Input";
-import InputRequired from "../form/InputRequired";
 import SubmitButton from "../form/SubmitButton";
 import Button from "../layout/Button";
 import styles from "./ProductsForm.module.css";
@@ -27,7 +26,7 @@ function ProductsForm({ handleSubmit }) {
   return (
     <form onSubmit={submit} className={styles.form_container}>
       <h1>Encontrar</h1>
-      <InputRequired
+      <Input
         type="text"
         name="product"
         text="Nome"
@@ -50,6 +49,14 @@ function ProductsForm({ handleSubmit }) {
         placeholder="Insira a descrição do produto"
         handleOnChange={handleChange}
         value={products.description ? products.description : ""}
+      />
+      <Input
+        type="number"
+        name="id"
+        text="Código"
+        placeholder="Insira o código do produto"
+        handleOnChange={handleChange}
+        value={products.id ? products.id : ""}
       />
 
       <div className={styles.form_buttons}>

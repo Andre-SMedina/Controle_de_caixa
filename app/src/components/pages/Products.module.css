@@ -13,11 +13,9 @@
   justify-content: center;
 }
 .products_forms {
-  padding: 20px;
+  margin-top: 25px;
   display: flex;
-  gap: 15px;
-  justify-content: space-between;
-  /* background-color: aqua; */
+  justify-content: center;
 }
 .products_container .products_forms h1 {
   margin: 0;
