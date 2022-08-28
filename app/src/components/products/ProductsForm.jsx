@@ -43,7 +43,7 @@ function ProductsForm({ handleSubmit }) {
         handleOnChange={handleChange}
         value={products.amount ? products.amount : ""}
       />
-      <Input
+      <InputRequired
         type="text"
         name="brand"
         text="Marca"
@@ -51,7 +51,7 @@ function ProductsForm({ handleSubmit }) {
         handleOnChange={handleChange}
         value={products.brand ? products.brand : ""}
       />
-      <Input
+      <InputRequired
         type="text"
         name="description"
         text="Descrição"

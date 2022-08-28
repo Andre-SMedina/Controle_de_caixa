@@ -1,0 +1,14 @@
+.productCardContainer {
+  background-color: rgb(137, 137, 137);
+  padding: 10px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  width: 250px;
+}
+.productCardContainer span {
+  font-weight: bold;
+}
+.productCardContainer h2 {
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}

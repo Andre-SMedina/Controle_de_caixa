@@ -16,11 +16,7 @@ function ProductsForm({ handleSubmit }) {
     setProducts({ ...products, [e.target.name]: e.target.value });
   }
   function handleReset() {
-    Array.from(document.querySelectorAll("input")).forEach((input) => {
-      if (!["Cadastrar", "Encontrar", "Limpar"].includes(input.value)) {
-        input.value = "";
-      }
-    });
+    setProducts({});
   }
 
   return (

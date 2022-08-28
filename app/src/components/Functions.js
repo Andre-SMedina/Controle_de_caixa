@@ -1,4 +1,4 @@
-function DataBase(obj, method, id) {
+function DataBase(obj, method, id = "") {
   if (method === "GET") {
     const prod = fetch(`http://localhost:5000/Products/${id}`, {
       method: method,

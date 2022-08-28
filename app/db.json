@@ -1,20 +1,52 @@
 {
   "Products": [
     {
-      "value": "2.5",
+      "product": "suco",
+      "amount": "77",
+      "brand": "delvale",
+      "description": "uva",
+      "value": "4",
+      "id": 1
+    },
+    {
       "product": "pao",
-      "amount": "50",
+      "amount": "77",
       "brand": "bom",
       "description": "integral",
+      "value": "5",
       "id": 2
     },
     {
-      "value": "4.5",
       "product": "leite",
-      "amount": "500",
-      "brand": "itambé",
+      "amount": "77",
+      "brand": "itambe",
       "description": "integral",
+      "value": "55",
       "id": 3
+    },
+    {
+      "product": "refrigerante",
+      "amount": "40",
+      "brand": "coca-cola",
+      "description": "diet",
+      "value": "34.60",
+      "id": 4
+    },
+    {
+      "product": "refrigerante",
+      "amount": "3",
+      "brand": "coca-cola",
+      "description": "laranja",
+      "value": "4.23",
+      "id": 5
+    },
+    {
+      "product": "biscoito",
+      "amount": "43",
+      "brand": "mabel",
+      "description": "doce",
+      "value": "3.43",
+      "id": 6
     }
   ]
 }
