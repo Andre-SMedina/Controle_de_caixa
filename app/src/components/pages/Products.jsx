@@ -6,20 +6,31 @@ import ProductsFormFind from "../products/ProductsFormFind";
 import styles from "./Products.module.css";
 import DataBase from "../Functions";
 import ProductsCard from "../products/ProductsCard";
+import Message from "../layout/Message";
 
 function Products() {
   const [showRegister, setShowRegister] = useState(false);
   const [showFind, setShowFind] = useState(false);
   const [showFindResult, setShowFindResult] = useState(false);
   const [products, setProducts] = useState({});
-  const [findResult, setfindResult] = useState({});
+  const [findResult, setFindResult] = useState([]);
+  const [message, setMessage] = useState("");
+  const [type, setType] = useState("");
 
   function filter(props, value) {
-    setfindResult(
-      products.filter((e) => {
-        return e[props] === value;
-      })
-    );
+    const findValues = products.filter((e) => {
+      return e[props] === value;
+    });
+
+    setFindResult(findValues);
+
+    if (findValues.length === 0) {
+      setMessage("Nenhum resultado");
+      setType("error");
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
+    }
   }
 
   function createPost(product) {
@@ -27,6 +38,11 @@ function Products() {
     product.brand = product.brand.toLowerCase();
     product.description = product.description.toLowerCase();
     DataBase(product, "POST", "");
+    setMessage("Produto registrado com sucesso!");
+    setType("success");
+    setTimeout(() => {
+      setMessage("");
+    }, 2000);
   }
 
   async function find(data) {
@@ -42,7 +58,7 @@ function Products() {
       data.description = data.description.toLowerCase();
       filter("description", data.description);
     } else {
-      setfindResult(products);
+      setFindResult(products);
     }
     setShowFindResult(true);
   }
@@ -59,6 +75,7 @@ function Products() {
   }
   return (
     <div className={styles.products_container}>
+      {message && <Message type={type} text={message} />}
       <h1>Produtos</h1>
       <div className={styles.products_buttons}>
         <Button func={toggleRegister} text="Cadastrar" />

@@ -9,7 +9,9 @@ function Navbar() {
       <Link to="/">
         <img src={logo} alt="" />
       </Link>
-      <h1>Controle de Caixa</h1>
+      <h1>
+        <Link to="/">Controle de Caixa</Link>
+      </h1>
       <ul>
         <Link to="/products">
           <li>Produtos</li>
