@@ -23,7 +23,7 @@ function ProductsForm({ handleSubmit }) {
     <form onSubmit={submit} className={styles.form_container}>
       <h1>Encontrar</h1>
       <Input
-        type="text"
+        type="search"
         name="product"
         text="Nome"
         placeholder="Insira o nome do produto"
@@ -31,7 +31,7 @@ function ProductsForm({ handleSubmit }) {
         value={products.product ? products.product : ""}
       />
       <Input
-        type="text"
+        type="search"
         name="brand"
         text="Marca"
         placeholder="Insira a marca do produto"
@@ -39,7 +39,7 @@ function ProductsForm({ handleSubmit }) {
         value={products.brand ? products.brand : ""}
       />
       <Input
-        type="text"
+        type="search"
         name="description"
         text="Descrição"
         placeholder="Insira a descrição do produto"

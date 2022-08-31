@@ -7,15 +7,35 @@ import styles from "./Products.module.css";
 import DataBase from "../Functions";
 import ProductsCard from "../products/ProductsCard";
 import Message from "../layout/Message";
+import ProductForm from "../products/ProductForm";
 
 function Products() {
+  //mostra o formulário para cadastrar um produto
   const [showRegister, setShowRegister] = useState(false);
   const [showFind, setShowFind] = useState(false);
   const [showFindResult, setShowFindResult] = useState(false);
+  const [editProduct, setEditProduct] = useState({});
+  //mostrar o formulário de edição
+  const [showEdit, setShowEdit] = useState(false);
   const [products, setProducts] = useState({});
   const [findResult, setFindResult] = useState([]);
   const [message, setMessage] = useState("");
   const [type, setType] = useState("");
+
+  function toggleRegister() {
+    setShowRegister(!showRegister);
+    setShowFind(false);
+    setShowFindResult(false);
+    setShowEdit(false);
+  }
+
+  async function toggleFind() {
+    setShowFind(!showFind);
+    if (showRegister) setShowRegister(!showRegister);
+    const dataFind = await DataBase({}, "GET", "");
+
+    setProducts(dataFind);
+  }
 
   function filter(props, value) {
     const findValues = products.filter((e) => {
@@ -37,6 +57,7 @@ function Products() {
     product.product = product.product.toLowerCase();
     product.brand = product.brand.toLowerCase();
     product.description = product.description.toLowerCase();
+
     DataBase(product, "POST", "");
     setMessage("Produto registrado com sucesso!");
     setType("success");
@@ -58,21 +79,58 @@ function Products() {
       data.description = data.description.toLowerCase();
       filter("description", data.description);
     } else {
-      setFindResult(products);
+      const dataFind = await DataBase({}, "GET", "");
+      sort(dataFind);
+      setFindResult(dataFind);
     }
     setShowFindResult(true);
+    setShowEdit(false);
   }
 
-  function toggleRegister() {
-    setShowRegister(!showRegister);
-    if (showFind) setShowFind(!showFind);
+  async function editForm(id) {
+    const dataFind = await DataBase({}, "GET", id);
+
+    setEditProduct(dataFind);
+
+    setShowFindResult(false);
+    setShowEdit(true);
   }
-  async function toggleFind() {
-    setShowFind(!showFind);
-    if (showRegister) setShowRegister(!showRegister);
+
+  async function editPost(product, id) {
+    await DataBase(product, "PATCH", id);
+
+    setShowEdit(false);
+
+    setMessage("Produto alterado com sucesso!");
+    setType("success");
+    setTimeout(() => {
+      setMessage("");
+    }, 2000);
+
     const dataFind = await DataBase({}, "GET", "");
     setProducts(dataFind);
   }
+
+  async function remove(id) {
+    await DataBase({}, "DELETE", id);
+
+    const dataFind = await DataBase({}, "GET", "");
+    sort(dataFind);
+    setFindResult(dataFind);
+    setShowFindResult(true);
+    setShowEdit(false);
+  }
+
+  function sort(list) {
+    list.sort((a, b) => {
+      if (a.product < b.product) {
+        return -1;
+      } else {
+        return true;
+      }
+    });
+  }
+
   return (
     <div className={styles.products_container}>
       {message && <Message type={type} text={message} />}
@@ -93,11 +151,14 @@ function Products() {
               brand={product.brand}
               description={product.description}
               amount={product.amount}
-              value={product.value}
+              price={product.value}
               id={product.id}
               key={product.id}
+              handleEdit={editForm}
+              handleRemove={remove}
             />
           ))}
+        {showEdit && <ProductForm handleSubmit={editPost} data={editProduct} />}
       </div>
     </div>
   );

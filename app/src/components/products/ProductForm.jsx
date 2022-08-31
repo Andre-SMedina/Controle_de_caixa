@@ -2,30 +2,22 @@ import { useState } from "react";
 
 import InputRequired from "../form/InputRequired";
 import SubmitButton from "../form/SubmitButton";
-import Button from "../layout/Button";
-import styles from "./ProductsForm.module.css";
+import styles from "./ProductForm.module.css";
 
-function ProductsForm({ handleSubmit }) {
-  const [products, setProducts] = useState({});
+function ProductForm({ handleSubmit, data }) {
+  const [products, setProducts] = useState(data);
 
   function submit(e) {
     e.preventDefault();
-    handleSubmit(products);
+    handleSubmit(products, data.id);
   }
   function handleChange(e) {
     setProducts({ ...products, [e.target.name]: e.target.value });
   }
-  function handleReset() {
-    Array.from(document.querySelectorAll("input")).forEach((input) => {
-      if (!["Cadastrar", "Encontrar", "Limpar"].includes(input.value)) {
-        input.value = "";
-      }
-    });
-  }
 
   return (
     <form onSubmit={submit} className={styles.form_container}>
-      <h1>Cadastro</h1>
+      <h1>Editar</h1>
       <InputRequired
         type="text"
         name="product"
@@ -67,11 +59,10 @@ function ProductsForm({ handleSubmit }) {
         value={products.value ? products.value : ""}
       />
       <div className={styles.form_buttons}>
-        <SubmitButton text="Cadastrar" />
-        <Button func={handleReset} text="Limpar" />
+        <SubmitButton text="Salvar" />
       </div>
     </form>
   );
 }
 
-export default ProductsForm;
+export default ProductForm;
