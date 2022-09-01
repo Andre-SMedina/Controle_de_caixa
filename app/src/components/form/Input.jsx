@@ -1,6 +1,14 @@
 import styles from "./Input.module.css";
 
-function Input({ type, name, text, placeholder, handleOnChange, value }) {
+function Input({
+  type,
+  name,
+  text,
+  placeholder,
+  handleOnChange,
+  value,
+  myFocus,
+}) {
   return (
     <div className={styles.input_container}>
       <label htmlFor={name}>{text}</label>
@@ -10,6 +18,7 @@ function Input({ type, name, text, placeholder, handleOnChange, value }) {
         placeholder={placeholder}
         onChange={handleOnChange}
         value={value}
+        autoFocus={myFocus}
       />
     </div>
   );

@@ -4,7 +4,7 @@ import Button from "../layout/Button";
 import ProductsForm from "../products/ProductsForm";
 import ProductsFormFind from "../products/ProductsFormFind";
 import styles from "./Products.module.css";
-import DataBase from "../Functions";
+import { DataBase, Messages, Sort } from "../Functions";
 import ProductsCard from "../products/ProductsCard";
 import Message from "../layout/Message";
 import ProductForm from "../products/ProductForm";
@@ -44,34 +44,25 @@ function Products() {
 
     setFindResult(findValues);
 
-    if (findValues.length === 0) {
-      setMessage("Nenhum resultado");
-      setType("error");
-      setTimeout(() => {
-        setMessage("");
-      }, 2000);
-    }
+    if (!findValues.length)
+      Messages(setMessage, "Nenhum resultado", setType, "error");
   }
 
   function createPost(product) {
-    product.product = product.product.toLowerCase();
+    product.name = product.name.toLowerCase();
     product.brand = product.brand.toLowerCase();
     product.description = product.description.toLowerCase();
 
     DataBase(product, "POST", "");
-    setMessage("Produto registrado com sucesso!");
-    setType("success");
-    setTimeout(() => {
-      setMessage("");
-    }, 2000);
+    Messages(setMessage, "Produto registrado com sucesso!", setType, "success");
   }
 
   async function find(data) {
     if (data.id) {
       filter("id", Number(data.id));
-    } else if (data.product) {
-      data.product = data.product.toLowerCase();
-      filter("product", data.product);
+    } else if (data.name) {
+      data.name = data.name.toLowerCase();
+      filter("product", data.name);
     } else if (data.brand) {
       data.brand = data.brand.toLowerCase();
       filter("brand", data.brand);
@@ -80,7 +71,7 @@ function Products() {
       filter("description", data.description);
     } else {
       const dataFind = await DataBase({}, "GET", "");
-      sort(dataFind);
+      Sort(dataFind);
       setFindResult(dataFind);
     }
     setShowFindResult(true);
@@ -101,11 +92,7 @@ function Products() {
 
     setShowEdit(false);
 
-    setMessage("Produto alterado com sucesso!");
-    setType("success");
-    setTimeout(() => {
-      setMessage("");
-    }, 2000);
+    Messages(setMessage, "Produto alterado com sucesso!", setType, "success");
 
     const dataFind = await DataBase({}, "GET", "");
     setProducts(dataFind);
@@ -115,20 +102,9 @@ function Products() {
     await DataBase({}, "DELETE", id);
 
     const dataFind = await DataBase({}, "GET", "");
-    sort(dataFind);
+    Sort(dataFind);
     setFindResult(dataFind);
     setShowFindResult(true);
-    setShowEdit(false);
-  }
-
-  function sort(list) {
-    list.sort((a, b) => {
-      if (a.product < b.product) {
-        return -1;
-      } else {
-        return true;
-      }
-    });
   }
 
   return (
@@ -147,12 +123,7 @@ function Products() {
         {showFindResult &&
           findResult.map((product) => (
             <ProductsCard
-              product={product.product}
-              brand={product.brand}
-              description={product.description}
-              amount={product.amount}
-              price={product.value}
-              id={product.id}
+              product={product}
               key={product.id}
               handleEdit={editForm}
               handleRemove={remove}

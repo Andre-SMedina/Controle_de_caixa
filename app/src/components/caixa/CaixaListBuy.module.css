@@ -1,0 +1,10 @@
+.card_container {
+  margin: 0 auto;
+}
+.card_list {
+  display: flex;
+  flex-direction: column;
+}
+.card_list p {
+  text-transform: capitalize;
+}

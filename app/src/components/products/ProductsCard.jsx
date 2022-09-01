@@ -1,45 +1,36 @@
 import styles from "./ProductsCard.module.css";
 
-function ProductsCard({
-  id,
-  product,
-  amount,
-  brand,
-  price,
-  description,
-  handleEdit,
-  handleRemove,
-}) {
+function ProductsCard({ product, handleEdit, handleRemove }) {
   function edit() {
-    handleEdit(id);
+    handleEdit(product.id);
   }
 
   function remove() {
-    handleRemove(id);
+    handleRemove(product.id);
   }
   return (
     <div className={styles.productCardContainer}>
-      <h2>{product}</h2>
+      <h2>{product.name}</h2>
       <div className={styles.card_data}>
         <p>
           <span>Marca: </span>
-          {brand}
+          {product.brand}
         </p>
         <p>
           <span>Descrição: </span>
-          {description}
+          {product.description}
         </p>
         <p>
           <span>Quantidade: </span>
-          {amount}
+          {product.amount}
         </p>
         <p>
           <span>Preço: </span>
-          {price}
+          {product.price}
         </p>
         <p>
           <span>Código: </span>
-          {id}
+          {product.id}
         </p>
       </div>
       <div className={styles.card_butons}>

@@ -1,84 +1,60 @@
 {
   "Products": [
     {
-      "product": "suco",
+      "name": "suco",
       "amount": "77",
       "brand": "delvale",
       "description": "uva",
-      "value": "4",
+      "price": "4",
       "id": 1
     },
     {
-      "product": "pao",
+      "name": "pao",
       "amount": "7",
       "brand": "bom",
       "description": "integral",
-      "value": "5",
+      "price": "5",
       "id": 2
     },
     {
-      "product": "leite",
+      "name": "leite",
       "amount": "77",
       "brand": "itambe",
       "description": "integral",
-      "value": "55",
+      "price": "55",
       "id": 3
     },
     {
-      "product": "refrigerante",
+      "name": "refrigerante",
       "amount": "40",
       "brand": "coca-cola",
       "description": "diet",
-      "value": "35.60",
+      "price": "35.60",
       "id": 4
     },
     {
-      "product": "refrigerante",
+      "name": "refrigerante",
       "amount": "3",
       "brand": "coca-cola",
       "description": "laranja",
-      "value": "4.23",
+      "price": "4.23",
       "id": 5
     },
     {
-      "product": "biscoito",
+      "name": "biscoito",
       "amount": "43",
       "brand": "mabel",
       "description": "doce",
-      "value": "3.43",
+      "price": "3.43",
       "id": 6
     },
     {
-      "product": "biscoito",
+      "name": "biscoito",
       "amount": "44",
       "brand": "fortaleza",
       "description": "integral de 400g com recheio de chocolate",
-      "value": "4.6",
-      "id": 8
-    },
-    {
-      "product": "biscoito",
-      "amount": "44",
-      "brand": "fortaleza",
-      "description": "integral de 400g com recheio de chocolate",
-      "value": "4.6",
-      "id": 9
-    },
-    {
-      "product": "biscoito",
-      "amount": "44",
-      "brand": "fortaleza",
-      "description": "integral de 400g com recheio de chocolate",
-      "value": "4.6",
-      "id": 10
-    },
-    {
-      "product": "biscoito",
-      "amount": "44",
-      "brand": "fortaleza",
-      "description": "integral de 400g com recheio de chocolate",
-      "value": "4.6",
-      "id": 11
+      "price": "4.6",
+      "id": 7
     }
   ],
   "Caixa": []

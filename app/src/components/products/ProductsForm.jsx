@@ -28,11 +28,11 @@ function ProductsForm({ handleSubmit }) {
       <h1>Cadastro</h1>
       <InputRequired
         type="text"
-        name="product"
+        name="name"
         text="Nome"
         placeholder="Insira o nome do produto"
         handleOnChange={handleChange}
-        value={products.product ? products.product : ""}
+        value={products.name ? products.name : ""}
       />
       <InputRequired
         type="number"

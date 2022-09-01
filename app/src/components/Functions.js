@@ -25,4 +25,22 @@ function DataBase(obj, method, id = "") {
   }
 }
 
-export default DataBase;
+function Messages(setMessage, textMessage, setType, type) {
+  setMessage(textMessage);
+  setType(type);
+  setTimeout(() => {
+    setMessage("");
+  }, 2000);
+}
+
+function Sort(list) {
+  list.sort((a, b) => {
+    if (a.name < b.name) {
+      return -1;
+    } else {
+      return true;
+    }
+  });
+}
+
+export { DataBase, Messages, Sort };

@@ -1,0 +1,9 @@
+.form_container {
+  width: 400px;
+}
+
+.form_container button {
+  /* margin-top: 20px; */
+  margin: 20px auto;
+  display: block;
+}

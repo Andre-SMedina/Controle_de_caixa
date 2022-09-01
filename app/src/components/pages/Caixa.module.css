@@ -1,6 +1,11 @@
 .container {
   padding: 25px;
+  margin: 0 auto;
 }
+.container h2,
 .container h1 {
   text-align: center;
+}
+.container form {
+  margin: 0 auto;
 }
