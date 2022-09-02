@@ -52,11 +52,11 @@ function ProductForm({ handleSubmit, data }) {
       />
       <InputRequired
         type="number"
-        name="value"
+        name="price"
         text="Valor"
         placeholder="Insira a valor do produto"
         handleOnChange={handleChange}
-        value={products.value ? products.value : ""}
+        value={products.price ? products.price : ""}
       />
       <div className={styles.form_buttons}>
         <SubmitButton text="Salvar" />

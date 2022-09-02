@@ -5,7 +5,7 @@
       "amount": "77",
       "brand": "delvale",
       "description": "uva",
-      "price": "4",
+      "price": "4.00",
       "id": 1
     },
     {
@@ -13,7 +13,7 @@
       "amount": "7",
       "brand": "bom",
       "description": "integral",
-      "price": "5",
+      "price": "5.00",
       "id": 2
     },
     {
@@ -21,7 +21,7 @@
       "amount": "77",
       "brand": "itambe",
       "description": "integral",
-      "price": "55",
+      "price": "55.00",
       "id": 3
     },
     {
@@ -53,7 +53,7 @@
       "amount": "44",
       "brand": "fortaleza",
       "description": "integral de 400g com recheio de chocolate",
-      "price": "4.6",
+      "price": "4.60",
       "id": 7
     }
   ],
