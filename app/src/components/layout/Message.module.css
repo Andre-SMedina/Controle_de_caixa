@@ -1,0 +1,16 @@
+.container {
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  width: 350px;
+  font-size: 1.3em;
+  position: fixed;
+  left: calc(50% - 175px);
+  top: 250px;
+}
+.error {
+  background-color: rgb(180, 3, 3);
+}
+.success {
+  background-color: rgb(6, 6, 207);
+}

@@ -1,0 +1,42 @@
+.card_container {
+  margin: 0 auto;
+}
+.card_list {
+  border-bottom: solid 1px white;
+  display: flex;
+  align-items: flex-end;
+  padding: 2px 5px;
+  background-color: rgb(53, 53, 113);
+  width: 700px;
+  position: relative;
+}
+.card_list p {
+  text-transform: capitalize;
+  text-align: start;
+}
+.product_name {
+  width: 200px;
+}
+.product_description {
+  width: 300px;
+}
+.product_brand {
+  width: 130px;
+}
+.card_list p.product_price {
+  text-align: center;
+  width: 50px;
+}
+.product_remove {
+  position: absolute;
+  right: -20px;
+  top: calc(50% - 9.2px);
+  background-color: red;
+  padding: 0 3px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.product_remove:hover {
+  background-color: brown;
+  transform: scale(1.2);
+}

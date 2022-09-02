@@ -1,0 +1,61 @@
+{
+  "Products": [
+    {
+      "name": "suco",
+      "amount": "77",
+      "brand": "delvale",
+      "description": "uva",
+      "price": "4.00",
+      "id": 1
+    },
+    {
+      "name": "pao",
+      "amount": "7",
+      "brand": "bom",
+      "description": "integral",
+      "price": "5.00",
+      "id": 2
+    },
+    {
+      "name": "leite",
+      "amount": "77",
+      "brand": "itambe",
+      "description": "integral",
+      "price": "55.00",
+      "id": 3
+    },
+    {
+      "name": "refrigerante",
+      "amount": "40",
+      "brand": "coca-cola",
+      "description": "diet",
+      "price": "35.60",
+      "id": 4
+    },
+    {
+      "name": "refrigerante",
+      "amount": "3",
+      "brand": "coca-cola",
+      "description": "laranja",
+      "price": "4.23",
+      "id": 5
+    },
+    {
+      "name": "biscoito",
+      "amount": "43",
+      "brand": "mabel",
+      "description": "doce",
+      "price": "3.43",
+      "id": 6
+    },
+    {
+      "name": "biscoito",
+      "amount": "44",
+      "brand": "fortaleza",
+      "description": "integral de 400g com recheio de chocolate",
+      "price": "4.60",
+      "id": 7
+    }
+  ],
+  "Caixa": []
+}

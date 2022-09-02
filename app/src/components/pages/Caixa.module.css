@@ -1,0 +1,42 @@
+.container {
+  padding: 25px;
+  margin: 0 auto;
+}
+.container h2,
+.container h1 {
+  text-align: center;
+}
+.container h2 {
+  margin-bottom: 10px;
+}
+.container form {
+  margin: 0 auto;
+}
+.list_buy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.list_buy_tittle {
+  display: flex;
+  width: 700px;
+  background-color: blueviolet;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid white;
+}
+.list_buy_tittle_product {
+  width: 200px;
+}
+.list_buy_tittle_description {
+  width: 300px;
+}
+.list_buy_tittle_brand {
+  width: 130px;
+}
+.list_buy_tittle_price {
+  width: 50px;
+}
+.list_buy_total {
+  justify-content: space-between;
+}

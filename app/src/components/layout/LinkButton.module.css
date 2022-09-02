@@ -1,0 +1,10 @@
+.btn {
+  border-radius: 10px;
+  padding: 0.5em 1em;
+  background-color: aliceblue;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background-color: burlywood;
+}
