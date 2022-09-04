@@ -15,12 +15,13 @@ function Caixa() {
   const [uid, setUid] = useState(0);
 
   async function submit(id) {
-    const item = await DataBase({}, "GET", id);
+    const find = await DataBase({}, "GET", `/${id}`);
 
-    if (!item.name) {
+    if (!find.length) {
       Messages(setMessage, "Produto não encontrado!", setType, "error");
       return;
     }
+    const item = find[0];
 
     setUid(uuid);
     item.uid = uid;
@@ -32,7 +33,7 @@ function Caixa() {
     setListBuy([...listBuy, item]);
   }
 
-  function removeListProduct(id, uid2) {
+  function removeListProduct(uid2) {
     const newList = listBuy.filter((item) => {
       if (item.uid === uid2) {
         const sum = parseFloat(total) - parseFloat(item.price);
@@ -43,6 +44,7 @@ function Caixa() {
     });
 
     setListBuy(newList);
+    return 4;
   }
   return (
     <div className={styles.container}>
@@ -58,10 +60,14 @@ function Caixa() {
           <h3 className={styles.list_buy_tittle_price}>Preço</h3>
         </div>
         {listBuy.length === 1 ? (
-          <CaixaListBuy product={listBuy[0]} />
+          <CaixaListBuy
+            handleOnRemove={removeListProduct}
+            product={listBuy[0]}
+          />
         ) : (
           listBuy.map((item) => (
             <CaixaListBuy
+              items={[setListBuy, listBuy, setTotal, total]}
               handleOnRemove={removeListProduct}
               product={item}
               key={uuid()}
