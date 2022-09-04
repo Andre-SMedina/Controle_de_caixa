@@ -29,23 +29,9 @@ function Products() {
     setShowEdit(false);
   }
 
-  async function toggleFind() {
+  function toggleFind() {
     setShowFind(!showFind);
     if (showRegister) setShowRegister(!showRegister);
-    const dataFind = await DataBase({}, "GET", "");
-
-    setProducts(dataFind);
-  }
-
-  function filter(props, value) {
-    const findValues = products.filter((e) => {
-      return e[props] === value;
-    });
-
-    setFindResult(findValues);
-
-    if (!findValues.length)
-      Messages(setMessage, "Nenhum resultado", setType, "error");
   }
 
   function createPost(product) {
@@ -58,30 +44,32 @@ function Products() {
   }
 
   async function find(data) {
-    if (data.id) {
-      filter("id", Number(data.id));
-    } else if (data.name) {
-      data.name = data.name.toLowerCase();
-      filter("product", data.name);
-    } else if (data.brand) {
-      data.brand = data.brand.toLowerCase();
-      filter("brand", data.brand);
-    } else if (data.description) {
-      data.description = data.description.toLowerCase();
-      filter("description", data.description);
+    const id = data.id ? `/${data.id}` : "";
+    const name = data.name ? `&name_like=${data.name}` : "";
+    const description = data.description
+      ? `&description_like=${data.description}`
+      : "";
+    const brand = data.brand ? `&brand_like=${data.brand}` : "";
+
+    const param = `${name}${description}${brand}`;
+
+    const dataFind = await DataBase({}, "GET", id || `?_sort=name${param}`);
+
+    if (!dataFind.length) {
+      Messages(setMessage, "Nenhum resultado", setType, "error");
+      setShowFindResult(false);
     } else {
-      const dataFind = await DataBase({}, "GET", "");
-      Sort(dataFind);
-      setFindResult(dataFind);
+      setShowFindResult(true);
     }
-    setShowFindResult(true);
+
+    setFindResult(dataFind);
     setShowEdit(false);
   }
 
   async function editForm(id) {
-    const dataFind = await DataBase({}, "GET", id);
+    const dataFind = await DataBase({}, "GET", `/${id}`);
 
-    setEditProduct(dataFind);
+    setEditProduct(dataFind[0]);
 
     setShowFindResult(false);
     setShowEdit(true);
