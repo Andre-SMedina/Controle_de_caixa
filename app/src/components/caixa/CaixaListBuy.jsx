@@ -3,7 +3,7 @@ import styles from "./CaixaListBuy.module.css";
 
 function CaixaListBuy({ product, handleOnRemove }) {
   function remove() {
-    handleOnRemove(product.id, product.uid);
+    handleOnRemove(product.uid);
   }
   return (
     <div className={styles.card_container}>

@@ -9,7 +9,7 @@ function DataBase(obj, method, params = "") {
       .then((resp) => resp.json())
       .then((data) => {
         if (data.name) {
-          console.log(data);
+          // console.log(data);
           return [data];
         }
         return data;

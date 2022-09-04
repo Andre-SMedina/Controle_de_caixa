@@ -7,5 +7,11 @@ app.use(express.static(path.join(__dirname, "build")));
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
+app.get("/products", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+app.get("/caixa", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.listen(3000);
