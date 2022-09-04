@@ -17,7 +17,6 @@ function Products() {
   const [editProduct, setEditProduct] = useState({});
   //mostrar o formulário de edição
   const [showEdit, setShowEdit] = useState(false);
-  const [products, setProducts] = useState({});
   const [findResult, setFindResult] = useState([]);
   const [message, setMessage] = useState("");
   const [type, setType] = useState("");
@@ -81,9 +80,6 @@ function Products() {
     setShowEdit(false);
 
     Messages(setMessage, "Produto alterado com sucesso!", setType, "success");
-
-    const dataFind = await DataBase({}, "GET", "");
-    setProducts(dataFind);
   }
 
   async function remove(id) {

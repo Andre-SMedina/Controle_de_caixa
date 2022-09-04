@@ -1,6 +1,8 @@
 function DataBase(obj, method, params = "") {
+  const op = 1;
+  const server = op ? "localhost" : "54.209.185.105";
   if (method === "GET") {
-    const prod = fetch(`http://54.209.185.105:5000/Products${params}`, {
+    const prod = fetch(`http://${server}:5000/Products${params}`, {
       method: method,
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +11,6 @@ function DataBase(obj, method, params = "") {
       .then((resp) => resp.json())
       .then((data) => {
         if (data.name) {
-          // console.log(data);
           return [data];
         }
         return data;
@@ -17,7 +18,7 @@ function DataBase(obj, method, params = "") {
       .catch((err) => console.log(err));
     return prod;
   } else {
-    fetch(`http://54.209.185.105:5000/Products/${params}`, {
+    fetch(`http://${server}:5000/Products/${params}`, {
       method: method,
       headers: {
         "Content-Type": "application/json",
