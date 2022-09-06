@@ -21,10 +21,6 @@ function ProductsCard({ product, handleEdit, handleRemove }) {
           {product.description}
         </p>
         <p>
-          <span>Quantidade: </span>
-          {product.amount}
-        </p>
-        <p>
           <span>Preço: </span>
           {product.price}
         </p>

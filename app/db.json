@@ -2,15 +2,14 @@
   "Products": [
     {
       "name": "suco",
-      "amount": "77",
       "brand": "delvale",
       "description": "uva",
       "price": "4.50",
-      "id": 1
+      "id": 1,
+      "uid": ""
     },
     {
       "name": "pao",
-      "amount": "7",
       "brand": "bom",
       "description": "integral",
       "price": "5.00",
@@ -18,7 +17,6 @@
     },
     {
       "name": "leite",
-      "amount": "77",
       "brand": "itambe",
       "description": "integral",
       "price": "55.00",
@@ -26,7 +24,6 @@
     },
     {
       "name": "refrigerante",
-      "amount": "40",
       "brand": "coca-cola",
       "description": "diet",
       "price": "35.60",
@@ -34,7 +31,6 @@
     },
     {
       "name": "refrigerante",
-      "amount": "3",
       "brand": "coca-cola",
       "description": "laranja",
       "price": "4.23",
@@ -42,7 +38,6 @@
     },
     {
       "name": "biscoito",
-      "amount": "43",
       "brand": "mabel",
       "description": "doce",
       "price": "10.43",
@@ -50,12 +45,103 @@
     },
     {
       "name": "biscoito",
-      "amount": "44",
       "brand": "fortaleza",
       "description": "integral de 400g com recheio de chocolate",
       "price": "4.00",
       "id": 7
+    },
+    {
+      "name": "banana",
+      "brand": "pomar",
+      "description": "prata",
+      "price": "2.00",
+      "id": 8
+    },
+    {
+      "name": "mamao",
+      "brand": "pomar",
+      "description": "formosa",
+      "price": "3.00",
+      "id": 9
+    },
+    {
+      "name": "mamao",
+      "brand": "pomar",
+      "description": "papaya",
+      "price": "1.00",
+      "id": 10
     }
   ],
-  "Caixa": []
+  "Caixa": [
+    {
+      "listBuy": [
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "4.50",
+          "id": 1,
+          "uid": 0,
+          "amount": 1
+        },
+        {
+          "name": "pao",
+          "brand": "bom",
+          "description": "integral",
+          "price": "10.00",
+          "id": 2,
+          "amount": "2",
+          "uid": "7c107c5e-8ad1-4e52-82ab-ccce13ca0cde"
+        },
+        {
+          "name": "refrigerante",
+          "brand": "coca-cola",
+          "description": "diet",
+          "price": "106.80",
+          "id": 4,
+          "amount": "3",
+          "uid": "2339d06a-556a-4935-bd1d-63b3c694915d"
+        }
+      ],
+      "id": 1,
+      "total": "121.30",
+      "date": "06/09/2022 - 20:08:57",
+      "items": 3
+    }
+  ],
+  "Temporary": [
+    {
+      "listBuy": [],
+      "id": 1,
+      "total": "0.00",
+      "date": "06/09/2022 - 20:08:57",
+      "items": 3
+    },
+    {
+      "listBuy": [
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "4.50",
+          "id": 1,
+          "uid": 0,
+          "amount": 1
+        },
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "9.00",
+          "id": 1,
+          "uid": "cb9717c4-d341-4b9a-8c1f-776fbe5cdb74",
+          "amount": "2"
+        }
+      ],
+      "id": 2,
+      "total": "13.50",
+      "date": "05/09/2022 - 17:51:01",
+      "items": 8
+    }
+  ]
 }

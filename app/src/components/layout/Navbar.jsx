@@ -19,7 +19,7 @@ function Navbar() {
         <Link to="/caixa">
           <li>Caixa</li>
         </Link>
-        <Link to="/">
+        <Link to="/balanco">
           <li>Balanço</li>
         </Link>
       </ul>

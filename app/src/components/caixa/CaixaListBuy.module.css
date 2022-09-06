@@ -7,36 +7,44 @@
   align-items: flex-end;
   padding: 2px 5px;
   background-color: rgb(53, 53, 113);
-  width: 700px;
+  width: 710px;
   position: relative;
 }
 .card_list p {
   text-transform: capitalize;
   text-align: start;
 }
+.product_id {
+  position: absolute;
+  left: -53px;
+  color: antiquewhite;
+}
 .product_name {
   width: 200px;
 }
 .product_description {
-  width: 300px;
+  width: 250px;
 }
 .product_brand {
   width: 130px;
+}
+.product_amount {
+  width: 80px;
 }
 .card_list p.product_price {
   text-align: center;
   width: 50px;
 }
-.product_remove {
+
+.card_list span {
   position: absolute;
   right: -20px;
-  top: calc(50% - 9.2px);
-  background-color: red;
-  padding: 0 3px;
+  top: calc(50% - 8px);
   cursor: pointer;
   transition: 0.3s;
+  color: red;
 }
-.product_remove:hover {
-  background-color: brown;
+.card_list:hover span {
+  color: brown;
   transform: scale(1.2);
 }
