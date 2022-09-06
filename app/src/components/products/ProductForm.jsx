@@ -27,14 +27,6 @@ function ProductForm({ handleSubmit, data }) {
         value={products.name ? products.name : ""}
       />
       <InputRequired
-        type="number"
-        name="amount"
-        text="Quantidade"
-        placeholder="Insira a quantidade do produto"
-        handleOnChange={handleChange}
-        value={products.amount ? products.amount : ""}
-      />
-      <InputRequired
         type="text"
         name="brand"
         text="Marca"

@@ -4,7 +4,7 @@ import Button from "../layout/Button";
 import ProductsForm from "../products/ProductsForm";
 import ProductsFormFind from "../products/ProductsFormFind";
 import styles from "./Products.module.css";
-import { DataBase, Messages, Sort } from "../Functions";
+import { DataBase, Messages } from "../Functions";
 import ProductsCard from "../products/ProductsCard";
 import Message from "../layout/Message";
 import ProductForm from "../products/ProductForm";
@@ -37,8 +37,9 @@ function Products() {
     product.name = product.name.toLowerCase();
     product.brand = product.brand.toLowerCase();
     product.description = product.description.toLowerCase();
+    product.price = parseFloat(product.price).toFixed(2);
 
-    DataBase(product, "POST", "");
+    DataBase(product, "POST", "", "products");
     Messages(setMessage, "Produto registrado com sucesso!", setType, "success");
   }
 
@@ -52,7 +53,12 @@ function Products() {
 
     const param = `${name}${description}${brand}`;
 
-    const dataFind = await DataBase({}, "GET", id || `?_sort=name${param}`);
+    const dataFind = await DataBase(
+      {},
+      "GET",
+      id || `?_sort=name${param}`,
+      "products"
+    );
 
     if (!dataFind.length) {
       Messages(setMessage, "Nenhum resultado", setType, "error");
@@ -66,7 +72,7 @@ function Products() {
   }
 
   async function editForm(id) {
-    const dataFind = await DataBase({}, "GET", `/${id}`);
+    const dataFind = await DataBase({}, "GET", `/${id}`, "products");
 
     setEditProduct(dataFind[0]);
 
@@ -75,7 +81,7 @@ function Products() {
   }
 
   async function editPost(product, id) {
-    await DataBase(product, "PATCH", id);
+    await DataBase(product, "PATCH", id, "products");
 
     setShowEdit(false);
 
@@ -83,10 +89,9 @@ function Products() {
   }
 
   async function remove(id) {
-    await DataBase({}, "DELETE", id);
+    await DataBase({}, "DELETE", id, "products");
 
-    const dataFind = await DataBase({}, "GET", "");
-    Sort(dataFind);
+    const dataFind = await DataBase({}, "GET", "?_sort=name", "products");
     setFindResult(dataFind);
     setShowFindResult(true);
   }
@@ -96,8 +101,8 @@ function Products() {
       {message && <Message type={type} text={message} />}
       <h1>Produtos</h1>
       <div className={styles.products_buttons}>
-        <Button func={toggleRegister} text="Cadastrar" />
-        <Button func={toggleFind} text="Encontrar" />
+        <Button handleOnClick={toggleRegister} text="Cadastrar" />
+        <Button handleOnClick={toggleFind} text="Encontrar" />
       </div>
       <div className={styles.products_forms}>
         {showRegister && <ProductsForm handleSubmit={createPost} />}

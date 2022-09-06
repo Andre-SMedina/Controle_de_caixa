@@ -1,9 +1,28 @@
 .form_container {
-  width: 400px;
+  width: 620px;
 }
-
-.form_container button {
-  /* margin-top: 20px; */
-  margin: 20px auto;
-  display: block;
+.buttons {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.buttons input {
+  background-color: #f6b60d;
+  color: #372800;
+  font-weight: bold;
+}
+.buttons input:hover {
+  background-color: hsl(44, 93%, 65%);
+  transform: scale(1.05);
+}
+.inputs {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+.inputs input {
+  width: 220px;
+}
+.amount input {
+  width: 100px;
 }
