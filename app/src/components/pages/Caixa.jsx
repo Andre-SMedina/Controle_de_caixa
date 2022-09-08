@@ -68,11 +68,18 @@ function Caixa() {
     DataBase(list, "PATCH", 1, "temporary");
   }
 
-  async function finishedBuy() {
+  async function finishedBuy(payment) {
     const list = await DataBase({}, "GET", "/1", "temporary");
 
     if (!list.listBuy.length) {
       return Messages(setMessage, "Nenhum produto na lista!", setType, "error");
+    } else if (!payment) {
+      return Messages(
+        setMessage,
+        "Escolha uma forma de pagamento!",
+        setType,
+        "error"
+      );
     }
 
     const date = new Date();
@@ -81,6 +88,7 @@ function Caixa() {
     list.date = dateFormat;
     list.id = "";
     list.items = list.listBuy.length;
+    list.payment = payment;
 
     await DataBase(list, "POST", "", "caixa");
 

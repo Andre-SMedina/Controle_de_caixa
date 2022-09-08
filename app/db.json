@@ -76,46 +76,20 @@
     {
       "listBuy": [
         {
-          "name": "suco",
-          "brand": "delvale",
-          "description": "uva",
-          "price": "4.50",
-          "id": 1,
-          "uid": 0,
-          "amount": 1
-        },
-        {
-          "name": "pao",
-          "brand": "bom",
+          "name": "leite",
+          "brand": "itambe",
           "description": "integral",
-          "price": "10.00",
-          "id": 2,
-          "amount": "2",
-          "uid": "7c107c5e-8ad1-4e52-82ab-ccce13ca0cde"
-        },
-        {
-          "name": "refrigerante",
-          "brand": "coca-cola",
-          "description": "diet",
-          "price": "106.80",
-          "id": 4,
-          "amount": "3",
-          "uid": "2339d06a-556a-4935-bd1d-63b3c694915d"
+          "price": "55.00",
+          "id": 3,
+          "amount": 1,
+          "uid": 0
         }
       ],
-      "id": 1,
-      "total": "121.30",
-      "date": "06/09/2022 - 20:08:57",
-      "items": 3
-    }
-  ],
-  "Temporary": [
-    {
-      "listBuy": [],
-      "id": 1,
-      "total": "0.00",
-      "date": "06/09/2022 - 20:08:57",
-      "items": 3
+      "id": 3,
+      "total": "55.00",
+      "date": "07/09/2022 - 17:14:17",
+      "items": 1,
+      "payment": "Pix"
     },
     {
       "listBuy": [
@@ -127,21 +101,59 @@
           "id": 1,
           "uid": 0,
           "amount": 1
-        },
-        {
-          "name": "suco",
-          "brand": "delvale",
-          "description": "uva",
-          "price": "9.00",
-          "id": 1,
-          "uid": "cb9717c4-d341-4b9a-8c1f-776fbe5cdb74",
-          "amount": "2"
         }
       ],
-      "id": 2,
-      "total": "13.50",
-      "date": "05/09/2022 - 17:51:01",
-      "items": 8
+      "id": 4,
+      "total": "4.50",
+      "date": "07/09/2022 - 17:16:49",
+      "items": 1,
+      "payment": "Dinheiro"
+    },
+    {
+      "listBuy": [
+        {
+          "name": "leite",
+          "brand": "itambe",
+          "description": "integral",
+          "price": "55.00",
+          "id": 3,
+          "amount": 1,
+          "uid": "02c68c9f-af0f-4301-a845-8baeb5ebdb60"
+        },
+        {
+          "name": "leite",
+          "brand": "itambe",
+          "description": "integral",
+          "price": "55.00",
+          "id": 3,
+          "amount": 1,
+          "uid": "83be80d2-7e3b-4ba5-95a1-098a0d58fa50"
+        },
+        {
+          "name": "refrigerante",
+          "brand": "coca-cola",
+          "description": "laranja",
+          "price": "4.23",
+          "id": 5,
+          "amount": 1,
+          "uid": "100e4a65-f0bf-45df-9327-bd182e63767c"
+        }
+      ],
+      "id": 5,
+      "total": "114.23",
+      "date": "07/09/2022 - 18:15:35",
+      "items": 3,
+      "payment": "Crédito"
+    }
+  ],
+  "Temporary": [
+    {
+      "listBuy": [],
+      "id": 1,
+      "total": "15.00",
+      "date": "07/09/2022 - 18:15:35",
+      "items": 3,
+      "payment": "Crédito"
     }
   ]
 }

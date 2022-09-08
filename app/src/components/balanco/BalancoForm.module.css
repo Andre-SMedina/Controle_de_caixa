@@ -1,0 +1,13 @@
+.form button {
+  margin-top: 10px;
+}
+.inputs {
+  display: flex;
+  gap: 25px;
+}
+.inputs input[type="date"] {
+  width: 150px;
+}
+.inputs input[type="number"] {
+  width: 100px;
+}

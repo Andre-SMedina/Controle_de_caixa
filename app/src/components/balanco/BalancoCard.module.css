@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+}
+.cards {
+  display: flex;
+  gap: 20px;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  padding: 3px;
+}
+.cards span {
+  color: coral;
+}
+.cards h3 {
+  cursor: pointer;
+  color: yellow;
+  /* text-decoration: underline; */
+  text-shadow: -2px 2px 2px rgb(0, 0, 0);
+  transition: 0.5s;
+}
+.cards h3:hover {
+  color: rgb(255, 172, 131);
+}
+.cards p {
+  width: 125px;
+}
+.cards .items {
+  width: 70px;
+}
+.cards .payment {
+  width: 170px;
+}
+.id {
+  display: none;
+}
