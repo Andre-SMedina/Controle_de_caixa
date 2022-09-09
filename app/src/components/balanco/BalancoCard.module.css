@@ -13,7 +13,7 @@
 .cards h3 {
   cursor: pointer;
   color: yellow;
-  /* text-decoration: underline; */
+  border-radius: 10px;
   text-shadow: -2px 2px 2px rgb(0, 0, 0);
   transition: 0.5s;
 }
@@ -23,12 +23,68 @@
 .cards p {
   width: 125px;
 }
+.exclude {
+  width: 50px;
+  height: 50px;
+  background-color: aqua;
+  cursor: pointer;
+  z-index: 9999;
+}
+.exclude svg {
+  font-size: 2em;
+  z-index: -99999;
+}
 .cards .items {
   width: 70px;
 }
 .cards .payment {
   width: 170px;
 }
-.id {
-  display: none;
+.details {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid white;
+  width: 700px;
+  top: 200px;
+  left: calc(50% - 350px);
+  background-color: rgb(66, 65, 114);
+}
+.details h2 {
+  text-align: center;
+}
+.details_item {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.details_item span {
+  color: rgb(255, 191, 0);
+  text-transform: capitalize;
+}
+.details_item div {
+  max-width: 210px;
+  min-width: 180px;
+}
+.fechar {
+  display: flex;
+  position: absolute;
+  top: 7px;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  background-color: red;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.fechar:hover {
+  background-color: rgb(174, 32, 3);
 }

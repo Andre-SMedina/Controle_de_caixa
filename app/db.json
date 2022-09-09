@@ -76,24 +76,6 @@
     {
       "listBuy": [
         {
-          "name": "leite",
-          "brand": "itambe",
-          "description": "integral",
-          "price": "55.00",
-          "id": 3,
-          "amount": 1,
-          "uid": 0
-        }
-      ],
-      "id": 3,
-      "total": "55.00",
-      "date": "07/09/2022 - 17:14:17",
-      "items": 1,
-      "payment": "Pix"
-    },
-    {
-      "listBuy": [
-        {
           "name": "suco",
           "brand": "delvale",
           "description": "uva",
@@ -144,16 +126,313 @@
       "date": "07/09/2022 - 18:15:35",
       "items": 3,
       "payment": "Crédito"
+    },
+    {
+      "listBuy": [
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "4.50",
+          "id": 1,
+          "uid": 0,
+          "amount": 1
+        },
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "4.50",
+          "id": 1,
+          "uid": "fa1a1bae-e3e9-42be-83e6-c96ea0506045",
+          "amount": 1
+        },
+        {
+          "name": "pao",
+          "brand": "bom",
+          "description": "integral",
+          "price": "15.00",
+          "id": 2,
+          "amount": "3",
+          "uid": "e9645767-ceb1-46eb-ae01-afd96f3a480d"
+        },
+        {
+          "name": "refrigerante",
+          "brand": "coca-cola",
+          "description": "laranja",
+          "price": "4.23",
+          "id": 5,
+          "amount": 1,
+          "uid": "f98ed622-5298-405d-a269-9a389832c39e"
+        },
+        {
+          "name": "refrigerante",
+          "brand": "coca-cola",
+          "description": "laranja",
+          "price": "4.23",
+          "id": 5,
+          "amount": 1,
+          "uid": "15e17f51-dfc4-43f1-98c7-07f499af0084"
+        },
+        {
+          "name": "refrigerante",
+          "brand": "coca-cola",
+          "description": "diet",
+          "price": "35.60",
+          "id": 4,
+          "amount": 1,
+          "uid": "250f40cb-265c-4b6b-8b66-796990c4dd0c"
+        },
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "13.50",
+          "id": 1,
+          "uid": "ada54356-390b-4a2d-8cfe-7b94c4c430be",
+          "amount": "3"
+        }
+      ],
+      "id": 6,
+      "total": "81.56",
+      "date": "08/09/2022 - 17:32:31",
+      "items": 7,
+      "payment": "Dinheiro"
+    },
+    {
+      "listBuy": [
+        {
+          "name": "leite",
+          "brand": "itambe",
+          "description": "integral",
+          "price": "55.00",
+          "id": 3,
+          "amount": 1,
+          "uid": 0
+        },
+        {
+          "name": "refrigerante",
+          "brand": "coca-cola",
+          "description": "diet",
+          "price": "178.00",
+          "id": 4,
+          "amount": "5",
+          "uid": "21bc2ccb-9478-448b-99f3-5ce11da03e56"
+        },
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "4.50",
+          "id": 1,
+          "uid": "0c9c2acd-fdd0-4a9d-b4b6-bfb7d36f1b3f",
+          "amount": 1
+        }
+      ],
+      "id": 7,
+      "total": "237.50",
+      "date": "08/09/2022 - 17:35:33",
+      "items": 3,
+      "payment": "Débito"
+    },
+    {
+      "listBuy": [
+        {
+          "name": "pao",
+          "brand": "bom",
+          "description": "integral",
+          "price": "5.00",
+          "id": 2,
+          "amount": 1,
+          "uid": "bx5no6H73TxzLbeqSVgRdf"
+        },
+        {
+          "name": "leite",
+          "brand": "itambe",
+          "description": "integral",
+          "price": "55.00",
+          "id": 3,
+          "amount": 1,
+          "uid": "7rddE8nVUgA4eHmXoc28Gs"
+        },
+        {
+          "name": "leite",
+          "brand": "itambe",
+          "description": "integral",
+          "price": "55.00",
+          "id": 3,
+          "amount": 1,
+          "uid": "aYesonHhdLNizjC2Tk3SMW"
+        },
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "4.50",
+          "id": 1,
+          "uid": "fnEaAKhSQSv3t76GPAqG96",
+          "amount": 1
+        },
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "4.50",
+          "id": 1,
+          "uid": "eYXRURzKcyZbLg44UawmYx",
+          "amount": 1
+        },
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "18.00",
+          "id": 1,
+          "uid": "7dxKKeBwjYHahQVyG9ETNN",
+          "amount": "4"
+        }
+      ],
+      "id": 8,
+      "total": "142.00",
+      "date": "09/09/2022 - 09:31:03",
+      "items": 6,
+      "payment": "Dinheiro"
+    },
+    {
+      "listBuy": [
+        {
+          "name": "pao",
+          "brand": "bom",
+          "description": "integral",
+          "price": "5.00",
+          "id": 2,
+          "amount": 1,
+          "uid": "v2Pum68LGdaDWzNqTuD15z"
+        },
+        {
+          "name": "leite",
+          "brand": "itambe",
+          "description": "integral",
+          "price": "55.00",
+          "id": 3,
+          "amount": 1,
+          "uid": "t8gSxsbsCqWTvEVHxkrox8"
+        },
+        {
+          "name": "pao",
+          "brand": "bom",
+          "description": "integral",
+          "price": "5.00",
+          "id": 2,
+          "amount": 1,
+          "uid": "7ns92xqeFkdJDMWtczeFZe"
+        },
+        {
+          "name": "banana",
+          "brand": "pomar",
+          "description": "prata",
+          "price": "3.00",
+          "id": 8,
+          "amount": 1,
+          "uid": "1q8D3VMWvB9XFnRLW9Cdyv"
+        }
+      ],
+      "id": 9,
+      "total": "68.00",
+      "date": "09/09/2022 - 09:31:54",
+      "items": 4,
+      "payment": "Crédito"
+    },
+    {
+      "listBuy": [
+        {
+          "name": "refrigerante",
+          "brand": "coca-cola",
+          "description": "laranja",
+          "price": "4.23",
+          "id": 5,
+          "amount": 1,
+          "uid": "oXZbWuLhv3b4M86jZBHYKs"
+        },
+        {
+          "name": "biscoito",
+          "brand": "fortaleza",
+          "description": "integral de 400g com recheio de chocolate",
+          "price": "4.00",
+          "id": 7,
+          "amount": 1,
+          "uid": "faJijUFFqwN2N4zSYLzcQa"
+        },
+        {
+          "name": "refrigerante",
+          "brand": "coca-cola",
+          "description": "laranja",
+          "price": "4.23",
+          "id": 5,
+          "amount": 1,
+          "uid": "mBZXnyBZPBeFqy1XNKUXv1"
+        },
+        {
+          "name": "refrigerante",
+          "brand": "coca-cola",
+          "description": "laranja",
+          "price": "4.23",
+          "id": 5,
+          "amount": 1,
+          "uid": "aM62Qa41xy67roMZP81KjS"
+        },
+        {
+          "name": "biscoito",
+          "brand": "fortaleza",
+          "description": "integral de 400g com recheio de chocolate",
+          "price": "12.00",
+          "id": 7,
+          "amount": "3",
+          "uid": "m5u1x3z14ZwQKcy9ws8ms8"
+        }
+      ],
+      "id": 10,
+      "total": "28.69",
+      "date": "09/09/2022 - 09:32:15",
+      "items": 5,
+      "payment": "Débito"
+    },
+    {
+      "listBuy": [
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "4.50",
+          "id": 1,
+          "uid": "xw2V23vtuEBzzKdw2DD2ff",
+          "amount": 1
+        },
+        {
+          "name": "suco",
+          "brand": "delvale",
+          "description": "uva",
+          "price": "4.50",
+          "id": 1,
+          "uid": "rJ4gsgFENTpbCyHn7zv5Lf",
+          "amount": 1
+        }
+      ],
+      "id": 12,
+      "total": "9.00",
+      "date": "09/09/2022 - 09:32:24",
+      "items": 2,
+      "payment": "Débito"
     }
   ],
   "Temporary": [
     {
       "listBuy": [],
       "id": 1,
-      "total": "15.00",
-      "date": "07/09/2022 - 18:15:35",
-      "items": 3,
-      "payment": "Crédito"
+      "total": "0.00",
+      "date": "09/09/2022 - 09:32:24",
+      "items": 2,
+      "payment": "Débito"
     }
   ]
 }

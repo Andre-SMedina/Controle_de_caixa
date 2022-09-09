@@ -1,0 +1,10 @@
+.trash {
+  color: red;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.5s;
+}
+.trash:hover {
+  color: rgb(255, 100, 44);
+  transform: scale(1.1);
+}
