@@ -13,5 +13,8 @@ app.get("/products", function (req, res) {
 app.get("/caixa", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
+app.get("/balanco", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
-app.listen(3000);
+app.listen(3002);

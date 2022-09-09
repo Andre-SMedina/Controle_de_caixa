@@ -18,7 +18,7 @@ function Caixa() {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/temporary/1`, {
+    fetch(`http://localhost:3001/temporary/1`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
