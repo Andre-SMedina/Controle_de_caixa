@@ -15,11 +15,11 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "uuid": "^8.3.2"
+    "short-uuid": "^4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "backend": "json-server --watch db.json --port 5001",
+    "backend": "json-server --watch db.json --port 5000",
     "serve": "serve -s build",
     "open": "start Brave http://localhost:3000",
     "mult": "npm-run-all --parallel backend start",

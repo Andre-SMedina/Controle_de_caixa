@@ -19,10 +19,14 @@
   margin-top: 25px;
   display: flex;
   justify-content: space-around;
+  /* background-color: #f6b60d; */
 }
 .inputs input {
-  width: 220px;
-}
-.amount input {
   width: 100px;
+}
+.inputs select {
+  width: 150px;
+}
+.cod input {
+  width: 200px;
 }

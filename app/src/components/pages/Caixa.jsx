@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { v4 as uuid } from "uuid";
+import { generate } from "short-uuid";
 import { BsFillTrashFill, BsSearch } from "react-icons/bs";
 
 import styles from "./Caixa.module.css";
@@ -16,10 +16,9 @@ function Caixa() {
   const [message, setMessage] = useState("");
   const [type, setType] = useState("");
   const [total, setTotal] = useState(0);
-  const [uid, setUid] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:5001/temporary/1`, {
+    fetch(`http://localhost:5000/temporary/1`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -52,8 +51,8 @@ function Caixa() {
       item.amount = 1;
     }
 
-    setUid(uuid);
-    item.uid = uid;
+    // setUid(uuid);
+    item.uid = generate();
 
     const price = (parseFloat(item.price) + parseFloat(total)).toFixed(2);
 
@@ -68,11 +67,18 @@ function Caixa() {
     DataBase(list, "PATCH", 1, "temporary");
   }
 
-  async function finishedBuy() {
+  async function finishedBuy(payment) {
     const list = await DataBase({}, "GET", "/1", "temporary");
 
     if (!list.listBuy.length) {
       return Messages(setMessage, "Nenhum produto na lista!", setType, "error");
+    } else if (!payment) {
+      return Messages(
+        setMessage,
+        "Escolha uma forma de pagamento!",
+        setType,
+        "error"
+      );
     }
 
     const date = new Date();
@@ -81,6 +87,7 @@ function Caixa() {
     list.date = dateFormat;
     list.id = "";
     list.items = list.listBuy.length;
+    list.payment = payment;
 
     await DataBase(list, "POST", "", "caixa");
 
@@ -170,7 +177,7 @@ function Caixa() {
               items={[setListBuy, listBuy, setTotal, total]}
               handleOnRemove={removeListProduct}
               product={item}
-              key={uuid()}
+              key={generate()}
             />
           ))
         )}
