@@ -13,7 +13,7 @@ function Balanco() {
     setShowCard(true);
   }
 
-  function deleteIdd(lista) {
+  function remove(lista) {
     setData(lista);
   }
 
@@ -23,7 +23,7 @@ function Balanco() {
       <h2>Pesquisar: </h2>
       <BalancoForm handleSubmit={findResult} />
       <div className={styles.find_card}>
-        {showCard && <BalancoCard solds={data} deletar={deleteIdd} />}
+        {showCard && <BalancoCard solds={data} handleDelete={remove} />}
       </div>
     </div>
   );

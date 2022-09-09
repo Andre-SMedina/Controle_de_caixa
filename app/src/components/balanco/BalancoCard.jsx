@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./BalancoCard.module.css";
 import BalancoDelete from "./BalancoDelete";
 
-function BalancoCard({ solds, deletar }) {
+function BalancoCard({ solds, handleDelete }) {
   const [showList, setShowList] = useState(false);
   const [products, setProducts] = useState([]);
 
@@ -21,8 +21,8 @@ function BalancoCard({ solds, deletar }) {
     setShowList(false);
   }
 
-  function deletou(lista) {
-    deletar(lista);
+  function remove(lista) {
+    handleDelete(lista);
   }
 
   return (
@@ -47,7 +47,11 @@ function BalancoCard({ solds, deletar }) {
             <span>Hora: </span>
             {sold.date.split("-")[1]}
           </p>
-          <BalancoDelete deleteId={sold.id} solds={solds} deletou={deletou} />
+          <BalancoDelete
+            deleteId={sold.id}
+            solds={solds}
+            handleDelete={remove}
+          />
         </div>
       ))}
       {showList && (
