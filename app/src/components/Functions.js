@@ -1,6 +1,6 @@
 function DataBase(obj, method, params = "", table) {
-  const op = 1;
-  const port = 3051;
+  const op = 0;
+  const port = 3001;
 
   const server = op ? "localhost" : "54.209.185.105";
   if (method === "GET") {
