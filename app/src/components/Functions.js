@@ -1,8 +1,9 @@
 function DataBase(obj, method, params = "", table) {
-  const op = 1;
+  const op = 0;
   const port = 3001;
 
   const server = op ? "localhost" : "54.209.185.105";
+  console.log(server);
   if (method === "GET") {
     const prod = fetch(`http://${server}:${port}/${table}${params}`, {
       method: method,
