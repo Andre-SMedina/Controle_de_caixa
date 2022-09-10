@@ -1,6 +1,6 @@
 function DataBase(obj, method, params = "", table) {
   const op = 0;
-  const port = 3001;
+  const port = 3051;
 
   const server = op ? "localhost" : "54.209.185.105";
   console.log(server);
