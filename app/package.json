@@ -20,13 +20,11 @@
   "scripts": {
     "start": "react-scripts start",
     "backend": "json-server --watch db.json --port 5000",
-    "serve": "serve -s build",
-    "open": "start Brave http://localhost:3000",
     "mult": "npm-run-all --parallel backend start",
-    "mult2": "npm-run-all --parallel backend serve",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "limara": "pm2 start outros/limara/limaraAPI.js"
   },
   "eslintConfig": {
     "extends": [

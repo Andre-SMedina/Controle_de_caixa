@@ -1,14 +1,1 @@
-{
-  "Products": [],
-  "Caixa": [],
-  "Temporary": [
-    {
-      "listBuy": [],
-      "id": 1,
-      "total": "0.00",
-      "date": "09/09/2022 - 10:17:03",
-      "items": 1,
-      "payment": "Débito"
-    }
-  ]
-}
+{}
