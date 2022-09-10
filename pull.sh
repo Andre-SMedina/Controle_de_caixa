@@ -16,7 +16,7 @@ done
 [ $opcao_A ] && git status
 [ $opcao_B ] && git add .
 [ $opcao_C ] && git commit -m att
-[ $opcao_D ] && git push
+[ $opcao_D ] && git push && Andre-SMedina
 [ $opcao_E ] && git pull #https://github.com/Andre-SMedina/Controle_de_caixa
 
 exit 0
