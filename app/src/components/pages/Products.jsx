@@ -8,6 +8,7 @@ import { DataBase, Messages } from "../Functions";
 import ProductsCard from "../products/ProductsCard";
 import Message from "../layout/Message";
 import ProductForm from "../products/ProductForm";
+import api from "../../utils/api";
 
 function Products() {
   //mostra o formulário para cadastrar um produto
@@ -33,46 +34,56 @@ function Products() {
     if (showRegister) setShowRegister(!showRegister);
   }
 
-  function createPost(product) {
+  async function createPost(product) {
     product.name = product.name.toLowerCase();
     product.brand = product.brand.toLowerCase();
     product.description = product.description.toLowerCase();
-    product.price = parseFloat(product.price).toFixed(2);
 
-    DataBase(product, "POST", "", "products");
+    await api.post("/cad", product);
+
     Messages(setMessage, "Produto registrado com sucesso!", setType, "success");
   }
 
   async function find(data) {
-    const id = data.id ? `/${data.id}` : "";
-    const name = data.name ? `&name_like=${data.name}` : "";
-    const description = data.description
-      ? `&description_like=${data.description}`
-      : "";
-    const brand = data.brand ? `&brand_like=${data.brand}` : "";
-
-    const param = `${name}${description}${brand}`;
-
-    const dataFind = await DataBase(
-      {},
-      "GET",
-      id || `?_sort=name${param}`,
-      "products"
-    );
-
-    if (!dataFind.length) {
-      Messages(setMessage, "Nenhum resultado", setType, "error");
-      setShowFindResult(false);
-    } else {
-      setShowFindResult(true);
-    }
-
-    setFindResult(dataFind);
+    await api
+      .get(`/find/${data.id}-${data.name}-${data.brand}-${data.description}`)
+      .then((data) => {
+        setFindResult(data.data);
+      });
+    setShowFindResult(true);
     setShowEdit(false);
+
+    if (false) {
+      const id = data.id ? `/${data.id}` : "";
+      const name = data.name ? `&name_like=${data.name}` : "";
+      const description = data.description
+        ? `&description_like=${data.description}`
+        : "";
+      const brand = data.brand ? `&brand_like=${data.brand}` : "";
+
+      const param = `${name}${description}${brand}`;
+
+      const dataFind = await DataBase(
+        {},
+        "GET",
+        id || `?_sort=name${param}`,
+        "products"
+      );
+
+      if (!dataFind.length) {
+        Messages(setMessage, "Nenhum resultado", setType, "error");
+        setShowFindResult(false);
+      } else {
+        setShowFindResult(true);
+      }
+
+      setFindResult(dataFind);
+      setShowEdit(false);
+    }
   }
 
   async function editForm(id) {
-    const dataFind = await DataBase({}, "GET", `/${id}`, "products");
+    const dataFind = (await api.get(`/find/${id}`)).data;
 
     setEditProduct(dataFind[0]);
 
@@ -81,18 +92,15 @@ function Products() {
   }
 
   async function editPost(product, id) {
-    await DataBase(product, "PATCH", id, "products");
-
-    setShowEdit(false);
+    await api.patch("/edit", product);
 
     Messages(setMessage, "Produto alterado com sucesso!", setType, "success");
   }
 
   async function remove(id) {
-    await DataBase({}, "DELETE", id, "products");
+    const products = await api.delete(`/delete/${id}`);
 
-    const dataFind = await DataBase({}, "GET", "?_sort=name", "products");
-    setFindResult(dataFind);
+    setFindResult(products.data);
     setShowFindResult(true);
   }
 
@@ -113,7 +121,7 @@ function Products() {
           findResult.map((product) => (
             <ProductsCard
               product={product}
-              key={product.id}
+              key={product.cod}
               handleEdit={editForm}
               handleRemove={remove}
             />

@@ -9,7 +9,7 @@ function ProductForm({ handleSubmit, data }) {
 
   function submit(e) {
     e.preventDefault();
-    handleSubmit(products, data.id);
+    handleSubmit(products, data.cod);
   }
   function handleChange(e) {
     setProducts({ ...products, [e.target.name]: e.target.value });

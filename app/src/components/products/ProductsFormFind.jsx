@@ -48,16 +48,16 @@ function ProductsForm({ handleSubmit }) {
       />
       <Input
         type="number"
-        name="id"
+        name="cod"
         text="Código"
         placeholder="Insira o código do produto"
         handleOnChange={handleChange}
-        value={products.id ? products.id : ""}
+        value={products.cod ? products.cod : ""}
       />
 
       <div className={styles.form_buttons}>
         <SubmitButton text="Buscar" />
-        <Button func={handleReset} text="Limpar" />
+        <Button handleOnClick={handleReset} text="Limpar" />
       </div>
     </form>
   );

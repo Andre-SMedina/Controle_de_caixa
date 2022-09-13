@@ -6,9 +6,10 @@ const cadSchema = new mongoose.Schema({
   description: { type: String },
   price: { type: Number },
   cod: { type: Number },
+  date: { timestamps: true },
 });
 
-const Products = mongoose.model("products", cadSchema);
+const Caixa = mongoose.model("caixa", cadSchema);
 
-module.exports = Products;
+module.exports = Caixa;
 // { timestamps: true }
