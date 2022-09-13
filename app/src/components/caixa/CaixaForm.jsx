@@ -18,13 +18,12 @@ function CaixaForm({ handleSubmit, handleClick }) {
 
   function submit(e) {
     e.preventDefault();
-    handleSubmit(product.id, product.fraction, product.amount);
+    handleSubmit(product.cod, product.fraction, product.amount);
     setProduct({});
   }
 
   function handleChange(e) {
     setProduct({ ...product, [e.target.name]: e.target.value });
-    console.log(product);
   }
 
   function handlePayment(e) {
@@ -45,11 +44,11 @@ function CaixaForm({ handleSubmit, handleClick }) {
         <div className={styles.cod}>
           <Input
             type="number"
-            name="id"
+            name="cod"
             text="Código do produto"
             placeholder="Digite o código do produto"
             handleOnChange={handleChange}
-            value={product.id ? product.id : ""}
+            value={product.cod ? product.cod : ""}
             myFocus={true}
           />
         </div>

@@ -1,16 +1,15 @@
 const express = require("express");
 const conn = require("./db/conn");
-const Products = require("./models/Products");
 const cors = require("cors");
+
+const Products = require("./models/Products");
+const Temporary = require("./models/Temporary");
+const Caixa = require("./models/Caixa");
 
 const app = express();
 conn();
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.send("Olá");
-});
 
 app.post("/cad", async (req, res) => {
   const product = req.body;
@@ -40,6 +39,14 @@ app.post("/cad", async (req, res) => {
   res.send("Produto cadastrado!");
 });
 
+app.post("/caixa", async (req, res) => {
+  const registerBuy = req.body;
+
+  await Caixa.create(registerBuy);
+
+  res.send("ok");
+});
+
 app.get("/find/:id", async (req, res) => {
   const data = req.params.id.split("-");
   let find = [];
@@ -66,10 +73,23 @@ app.get("/find/:id", async (req, res) => {
   res.send(find);
 });
 
+app.get("/temp", async (req, res) => {
+  const data = await Temporary.findOne({});
+  res.send(data);
+});
+
 app.patch("/edit", async (req, res) => {
   const product = req.body;
 
   await Products.findByIdAndUpdate({ _id: product._id }, product);
+
+  res.send("ok");
+});
+
+app.patch("/temp", async (req, res) => {
+  const body = req.body;
+
+  await Temporary.findByIdAndUpdate({ _id: "631fcadf5a0b6b0514735dd3" }, body);
 
   res.send("ok");
 });

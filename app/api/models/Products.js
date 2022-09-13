@@ -11,4 +11,3 @@ const cadSchema = new mongoose.Schema({
 const Products = mongoose.model("products", cadSchema);
 
 module.exports = Products;
-// { timestamps: true }

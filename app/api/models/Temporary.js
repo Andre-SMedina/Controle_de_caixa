@@ -7,7 +7,6 @@ const cadSchema = new mongoose.Schema({
   payment: { type: String },
   date: { type: String },
 });
+const Temporary = mongoose.model("temporaries", cadSchema);
 
-const Caixa = mongoose.model("caixa", cadSchema);
-
-module.exports = Caixa;
+module.exports = Temporary;
