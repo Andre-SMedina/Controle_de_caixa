@@ -11,10 +11,9 @@ const Temporary = require("./models/Temporary");
 const Caixa = require("./models/Caixa");
 
 const app = express();
-app.use(cors({ credentials: true, origin: process.env.REACT_APP_CORS }));
+app.use(cors({ credentials: true, origin: "http://54.209.185.105:3001" }));
 app.use(express.json());
 conn("Caixa");
-console.log(process.env.REACT_APP_CORS);
 
 //authetication
 const UserRoutes = require("./routes/UserRoutes");
