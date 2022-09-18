@@ -44,7 +44,7 @@
   transition: 0.3s;
   color: red;
 }
-.card_list:hover span {
+.card_list span:hover {
   color: brown;
   transform: scale(1.2);
 }

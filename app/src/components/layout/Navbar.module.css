@@ -31,3 +31,10 @@
 .navbar h1 {
   font-size: 2em;
 }
+.navbar input {
+  background-color: rgb(197, 25, 25);
+  color: white;
+}
+.navbar input:hover {
+  background-color: rgb(215, 62, 62);
+}

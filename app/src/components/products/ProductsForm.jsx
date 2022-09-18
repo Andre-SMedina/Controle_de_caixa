@@ -60,7 +60,7 @@ function ProductsForm({ handleSubmit }) {
       />
       <div className={styles.form_buttons}>
         <SubmitButton text="Cadastrar" />
-        <Button func={handleReset} text="Limpar" />
+        <Button handleOnClick={handleReset} text="Limpar" />
       </div>
     </form>
   );

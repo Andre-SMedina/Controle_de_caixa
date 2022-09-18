@@ -5,9 +5,10 @@ import { BsFillTrashFill, BsSearch } from "react-icons/bs";
 import styles from "./Caixa.module.css";
 import CaixaForm from "../caixa/CaixaForm";
 import CaixaListBuy from "../caixa/CaixaListBuy";
-import { DataBase, Messages } from "../Functions";
+import { Messages } from "../Functions";
 import Message from "../layout/Message";
 import Input from "../form/Input";
+import api from "../../utils/api";
 
 function Caixa() {
   const [listBuy, setListBuy] = useState([]);
@@ -18,28 +19,29 @@ function Caixa() {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    fetch(`http://54.209.185.105:3051/temporary/1`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setListBuy(data.listBuy);
-        setTotal(data.total);
-      })
-      .catch((err) => console.log(err));
+    async function apiGet() {
+      // api.defaults.headers.Authorization = `Bearer ${JSON.parse(
+      //   localStorage.getItem("token")
+      // )}`;
+      const data = (await api.get(`/temp`)).data;
+
+      setListBuy(data.listBuy);
+      setTotal(data.total);
+    }
+
+    apiGet();
   }, []);
 
-  async function submit(id, fraction, amount) {
-    const find = await DataBase({}, "GET", `/${id}`, "products");
+  async function submit(cod, fraction, amount) {
+    const finded = (await api.post(`/find`, { cod })).data;
 
-    if (!find.length) {
+    if ((finded.length > 1) | (finded.length < 1)) {
       Messages(setMessage, "Produto não encontrado!", setType, "error");
       return;
     }
-    const item = find[0];
+    const item = finded[0];
+
+    item.price = item.price.toFixed(2);
 
     if (fraction) {
       item.price = (parseFloat(item.price) * parseFloat(fraction)).toFixed(2);
@@ -60,15 +62,16 @@ function Caixa() {
     setListBuy([...listBuy, item]);
 
     //table caixa
-    const list = await DataBase({}, "GET", "/1", "temporary");
+    const list = (await api.get(`/temp`)).data;
     list.listBuy.push(item);
     list.total = price;
+    const newList = list;
 
-    DataBase(list, "PATCH", 1, "temporary");
+    await api.patch("/temp", newList);
   }
 
   async function finishedBuy(payment) {
-    const list = await DataBase({}, "GET", "/1", "temporary");
+    const list = (await api.get(`/temp`)).data;
 
     if (!list.listBuy.length) {
       return Messages(setMessage, "Nenhum produto na lista!", setType, "error");
@@ -82,19 +85,23 @@ function Caixa() {
     }
 
     const date = new Date();
-    const dateFormat = `${date.toLocaleDateString()} - ${date.toLocaleTimeString()}`;
+    const dateFormated = `${date.toLocaleDateString()} - ${date.toLocaleTimeString()}`;
 
-    list.date = dateFormat;
-    list.id = "";
-    list.items = list.listBuy.length;
-    list.payment = payment;
+    const newList = {
+      userId: list.listBuy[0].userId,
+      listBuy: list.listBuy,
+      total: list.total,
+      items: list.listBuy.length,
+      payment: payment,
+      date: dateFormated,
+    };
 
-    await DataBase(list, "POST", "", "caixa");
+    await api.post("/caixa", newList);
 
-    list.listBuy = [];
-    list.total = "0.00";
+    newList.listBuy = [];
+    newList.total = "0.00";
 
-    await DataBase(list, "PATCH", 1, "temporary");
+    await api.patch("/temp", newList);
 
     setListBuy([]);
     setTotal(0);
@@ -115,18 +122,18 @@ function Caixa() {
 
     setListBuy(newList);
 
-    const list = await DataBase({}, "GET", "/1", "temporary");
+    const list = (await api.get(`/temp`)).data;
     list.listBuy = newList;
     list.total = price;
 
-    DataBase(list, "PATCH", 1, "temporary");
+    await api.patch("/temp", list);
   }
 
   async function clearList() {
     setListBuy([]);
     setTotal("0.00");
     const list = { listBuy: [], total: "0.00" };
-    await DataBase(list, "PATCH", 1, "temporary");
+    await api.patch("/temp", list);
   }
 
   function toggleFastFind() {
@@ -134,18 +141,13 @@ function Caixa() {
     setFindProduct([]);
   }
 
-  async function find(name) {
+  async function fastFind(name) {
     const nameFind = name.target.value;
 
     if (nameFind.length > 1) {
-      const listFind = await DataBase(
-        {},
-        "GET",
-        `?_sort=name&name_like=${nameFind}`,
-        "products"
-      );
+      const listFound = (await api.post(`/find/`, { name: nameFind })).data;
 
-      setFindProduct(listFind);
+      setFindProduct(listFound);
     } else setFindProduct([]);
   }
 
@@ -193,14 +195,14 @@ function Caixa() {
             type="search"
             name="name"
             placeholder="Nome do produto (min 2 letras)"
-            handleOnChange={find}
+            handleOnChange={fastFind}
             autoFocus={false}
           />
           <div onClick={toggleFastFind} className={styles.close_find}>
             X
           </div>
           {findProduct.map((product) => (
-            <div key={product.id} className={styles.fastFind_result}>
+            <div key={product.cod} className={styles.fastFind_result}>
               <p>
                 Nome: <span>{product.name}</span>
               </p>
@@ -208,13 +210,13 @@ function Caixa() {
                 Marca: <span>{product.brand}</span>
               </p>
               <p>
-                Tipo: <span>{product.description}</span>
+                Descrição: <span>{product.description}</span>
               </p>
               <p>
                 Preço: <span>{product.price}</span>
               </p>
               <p>
-                Cod. <span>{product.id}</span>
+                Cod. <span>{product.cod}</span>
               </p>
             </div>
           ))}

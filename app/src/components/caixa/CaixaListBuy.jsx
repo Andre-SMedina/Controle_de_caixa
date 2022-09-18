@@ -10,7 +10,7 @@ function CaixaListBuy({ product, handleOnRemove }) {
     <div className={styles.card_container}>
       {product.name && (
         <div className={styles.card_list}>
-          <p className={styles.product_id}>cod. {product.id}</p>
+          <p className={styles.product_id}>cod. {product.cod}</p>
           <p className={styles.product_name}>{product.name}</p>
           <p className={styles.product_description}>{product.description}</p>
           <p className={styles.product_brand}>{product.brand}</p>

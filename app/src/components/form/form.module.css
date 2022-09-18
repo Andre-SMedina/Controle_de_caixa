@@ -1,0 +1,21 @@
+.form_control {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form_control div {
+  width: 500px;
+}
+.form_control div input {
+  margin-bottom: 10px;
+}
+.form_control h1 {
+  text-align: center;
+}
+.form_control div button {
+  margin: 0 auto;
+}

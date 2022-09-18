@@ -2,11 +2,11 @@ import styles from "./ProductsCard.module.css";
 
 function ProductsCard({ product, handleEdit, handleRemove }) {
   function edit() {
-    handleEdit(product.id);
+    handleEdit(product.cod);
   }
 
   function remove() {
-    handleRemove(product.id);
+    handleRemove(product._id);
   }
   return (
     <div className={styles.productCardContainer}>
@@ -22,11 +22,11 @@ function ProductsCard({ product, handleEdit, handleRemove }) {
         </p>
         <p>
           <span>Preço: </span>
-          {product.price}
+          {parseFloat(product.price).toFixed(2)}
         </p>
         <p>
           <span>Código: </span>
-          {product.id}
+          {product.cod}
         </p>
       </div>
       <div className={styles.card_butons}>
