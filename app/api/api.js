@@ -11,7 +11,7 @@ const Temporary = require("./models/Temporary");
 const Caixa = require("./models/Caixa");
 
 const app = express();
-app.use(cors({ credentials: true, origin: "http://54.209.185.105:3001" }));
+app.use(cors({ credentials: true, origin: "http://54.209.185.105:3000" }));
 app.use(express.json());
 conn("Caixa");
 
