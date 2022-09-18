@@ -4,7 +4,7 @@ import Button from "../layout/Button";
 import ProductsForm from "../products/ProductsForm";
 import ProductsFormFind from "../products/ProductsFormFind";
 import styles from "./Products.module.css";
-import { DataBase, Messages } from "../Functions";
+import { Messages } from "../Functions";
 import ProductsCard from "../products/ProductsCard";
 import Message from "../layout/Message";
 import ProductForm from "../products/ProductForm";
@@ -45,53 +45,24 @@ function Products() {
   }
 
   async function find(data) {
-    await api
-      .get(`/find/${data.id}-${data.name}-${data.brand}-${data.description}`)
-      .then((data) => {
-        setFindResult(data.data);
-      });
+    await api.post(`/find`, data).then((data) => {
+      setFindResult(data.data);
+    });
     setShowFindResult(true);
     setShowEdit(false);
-
-    if (false) {
-      const id = data.id ? `/${data.id}` : "";
-      const name = data.name ? `&name_like=${data.name}` : "";
-      const description = data.description
-        ? `&description_like=${data.description}`
-        : "";
-      const brand = data.brand ? `&brand_like=${data.brand}` : "";
-
-      const param = `${name}${description}${brand}`;
-
-      const dataFind = await DataBase(
-        {},
-        "GET",
-        id || `?_sort=name${param}`,
-        "products"
-      );
-
-      if (!dataFind.length) {
-        Messages(setMessage, "Nenhum resultado", setType, "error");
-        setShowFindResult(false);
-      } else {
-        setShowFindResult(true);
-      }
-
-      setFindResult(dataFind);
-      setShowEdit(false);
-    }
   }
 
-  async function editForm(id) {
-    const dataFind = (await api.get(`/find/${id}`)).data;
+  async function editCardForm(cod) {
+    const data = { cod };
+    const dataFind = (await api.post(`/find`, data)).data[0];
 
-    setEditProduct(dataFind[0]);
+    setEditProduct(dataFind);
 
     setShowFindResult(false);
     setShowEdit(true);
   }
 
-  async function editPost(product, id) {
+  async function editCardPost(product) {
     await api.patch("/edit", product);
 
     Messages(setMessage, "Produto alterado com sucesso!", setType, "success");
@@ -122,11 +93,13 @@ function Products() {
             <ProductsCard
               product={product}
               key={product.cod}
-              handleEdit={editForm}
+              handleEdit={editCardForm}
               handleRemove={remove}
             />
           ))}
-        {showEdit && <ProductForm handleSubmit={editPost} data={editProduct} />}
+        {showEdit && (
+          <ProductForm handleSubmit={editCardPost} data={editProduct} />
+        )}
       </div>
     </div>
   );

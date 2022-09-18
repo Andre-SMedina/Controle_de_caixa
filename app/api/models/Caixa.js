@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const cadSchema = new mongoose.Schema({
+  userId: { type: String },
   listBuy: [],
   total: { type: String },
   items: { type: Number },
@@ -8,6 +9,6 @@ const cadSchema = new mongoose.Schema({
   date: { type: String },
 });
 
-const Caixa = mongoose.model("caixa", cadSchema);
+const Caixa = mongoose.model("Caixa", cadSchema);
 
 module.exports = Caixa;

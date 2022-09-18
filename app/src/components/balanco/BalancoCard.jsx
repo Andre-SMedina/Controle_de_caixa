@@ -8,10 +8,10 @@ function BalancoCard({ solds, handleDelete }) {
   const [products, setProducts] = useState([]);
 
   function details(e) {
-    const id = parseInt(e.target.id);
+    const id = e.target.id;
 
     solds.forEach((item) => {
-      if (item.id === id) setProducts(item.listBuy);
+      if (item._id === id) setProducts(item.listBuy);
     });
 
     setShowList(true);
@@ -28,8 +28,8 @@ function BalancoCard({ solds, handleDelete }) {
   return (
     <div className={styles.container}>
       {solds.map((sold) => (
-        <div className={styles.cards} key={sold.id}>
-          <h3 onClick={details} id={sold.id}>
+        <div className={styles.cards} key={sold._id}>
+          <h3 onClick={details} id={sold._id}>
             Ver produtos
           </h3>
           <p className={styles.payment}>
@@ -48,7 +48,7 @@ function BalancoCard({ solds, handleDelete }) {
             {sold.date.split("-")[1]}
           </p>
           <BalancoDelete
-            deleteId={sold.id}
+            deleteId={sold._id}
             solds={solds}
             handleDelete={remove}
           />

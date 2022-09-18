@@ -1,15 +1,15 @@
 import styles from "./BalancoForm.module.css";
 import Input from "../form/Input";
 import SubmitButton from "../form/SubmitButton";
-import { DataBase } from "../Functions";
+import api from "../../utils/api";
 
 function BalancoForm({ handleSubmit }) {
   async function submit(e) {
     e.preventDefault();
-    const date = e.target[0].value.split("-").reverse().join("/");
-    // const cod = e.target[1].value;
+    const date = e.target[0].value.split("-").reverse().join("-");
+
     if (date) {
-      const find = await DataBase({}, "GET", `?date_like=${date}`, "caixa");
+      const find = (await api.get(`/balanco/${date}`)).data;
       handleSubmit(find);
     }
   }
@@ -20,7 +20,7 @@ function BalancoForm({ handleSubmit }) {
         <Input type="date" name="date" text="Por data" myFocus={true} />
         <Input
           type="number"
-          name="id"
+          name="cod"
           text="Por código do produto"
           myFocus={true}
         />

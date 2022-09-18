@@ -6,6 +6,7 @@ function InputRequired({
   text,
   placeholder,
   handleOnChange,
+  myFocus,
   value,
 }) {
   return (
@@ -17,6 +18,7 @@ function InputRequired({
         placeholder={placeholder}
         onChange={handleOnChange}
         value={value}
+        autoFocus={myFocus}
         required
       />
     </div>

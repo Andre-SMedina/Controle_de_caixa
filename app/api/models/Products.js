@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+let model;
 
 const cadSchema = new mongoose.Schema({
   name: { type: String },
@@ -6,8 +7,9 @@ const cadSchema = new mongoose.Schema({
   description: { type: String },
   price: { type: Number },
   cod: { type: Number },
+  userId: { type: String },
 });
 
-const Products = mongoose.model("products", cadSchema);
+const Products = mongoose.model("Products", cadSchema);
 
 module.exports = Products;
