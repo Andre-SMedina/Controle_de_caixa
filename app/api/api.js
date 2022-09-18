@@ -14,6 +14,7 @@ const app = express();
 app.use(cors({ credentials: true, origin: process.env.REACT_APP_CORS }));
 app.use(express.json());
 conn("Caixa");
+console.log(process.env.REACT_APP_CORS);
 
 //authetication
 const UserRoutes = require("./routes/UserRoutes");
