@@ -3,6 +3,7 @@ const conn = require("./db/conn");
 const cors = require("cors");
 const getUserByToken = require("./helpers/get-user-by-token");
 const getToken = require("./helpers/get-token");
+const port = 3001;
 require("dotenv").config();
 
 const Products = require("./models/Products");
@@ -180,6 +181,6 @@ app.delete("/caixa/delete/:id", async (req, res) => {
   res.send("ok");
 });
 
-app.listen(3001, () => {
-  console.log("Rodando na porta 3001");
+app.listen(port, () => {
+  console.log(`Rodando na porta ${port}`);
 });
