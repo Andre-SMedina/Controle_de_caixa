@@ -4,14 +4,22 @@ import InputRequired from "../form/InputRequired";
 import styles from "../form/form.module.css";
 import SubmitButton from "../form/SubmitButton";
 import { Context } from "../../context/UserContext";
+import { Messages } from "../Functions";
+import Message from "../layout/Message";
 
 function Register() {
   const [user, setuser] = useState([]);
   const { register } = useContext(Context);
+  const [message, setMessage] = useState("");
+  const [type, setType] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    register(user);
+    const response = await register(user);
+
+    if (response) {
+      Messages(setMessage, response, setType, "error");
+    }
   }
 
   function handleChange(e) {
@@ -19,6 +27,7 @@ function Register() {
   }
   return (
     <form onSubmit={handleSubmit} className={styles.form_control}>
+      {message && <Message type={type} text={message} />}
       <div>
         <h1>Registro de usuário</h1>
         <InputRequired

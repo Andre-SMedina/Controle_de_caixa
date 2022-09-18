@@ -25,7 +25,7 @@ export default function useAuth() {
 
       await authUser(data);
     } catch (error) {
-      console.log(error.response.data.message);
+      return error.response.data.message;
     }
   }
 
@@ -36,7 +36,7 @@ export default function useAuth() {
       });
       await authUser(data);
     } catch (error) {
-      console.log(error.response.data.message);
+      return error.response.data.message;
     }
   }
 
