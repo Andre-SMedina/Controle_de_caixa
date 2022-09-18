@@ -21,6 +21,10 @@ const Users = require("./models/User");
 app.use("/users", UserRoutes);
 
 // other routes
+app.use("/", (req, res) => {
+  res.send("API Caixa");
+});
+
 app.post("/cad", async (req, res) => {
   const token = getToken(req);
   const product = req.body;
