@@ -24,3 +24,8 @@
   border-style: dashed;
   padding: 5px;
 }
+.auth {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}

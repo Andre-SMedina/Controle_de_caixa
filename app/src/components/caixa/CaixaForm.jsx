@@ -18,7 +18,7 @@ function CaixaForm({ handleSubmit, handleClick }) {
 
   function submit(e) {
     e.preventDefault();
-    handleSubmit(product.cod, product.fraction, product.amount);
+    handleSubmit(product.cod, product.amount);
     setProduct({});
   }
 
@@ -50,6 +50,7 @@ function CaixaForm({ handleSubmit, handleClick }) {
             handleOnChange={handleChange}
             value={product.cod ? product.cod : ""}
             myFocus={true}
+            idFocus={"focus"}
           />
         </div>
         <Input
@@ -59,15 +60,6 @@ function CaixaForm({ handleSubmit, handleClick }) {
           placeholder="1"
           handleOnChange={handleChange}
           value={product.amount ? product.amount : ""}
-          myFocus={false}
-        />
-        <Input
-          type="number"
-          name="fraction"
-          text="Fração"
-          placeholder="1,0"
-          handleOnChange={handleChange}
-          value={product.fraction ? product.fraction : ""}
           myFocus={false}
         />
         <Select

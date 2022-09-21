@@ -20,7 +20,7 @@
 .list_buy_tittle {
   position: relative;
   display: flex;
-  width: 710px;
+  width: 790px;
   background-color: blueviolet;
   padding: 5px;
   margin: 5px 0;
@@ -48,10 +48,13 @@
 .list_buy_tittle_brand {
   width: 130px;
 }
+.list_buy_tittle_price {
+  width: 80px;
+}
 .list_buy_tittle_amount {
   width: 80px;
 }
-.list_buy_tittle_price {
+.list_buy_tittle_total {
   width: 50px;
 }
 .list_buy_total {

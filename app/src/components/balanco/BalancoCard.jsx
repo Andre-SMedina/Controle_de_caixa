@@ -73,10 +73,13 @@ function BalancoCard({ solds, handleDelete }) {
                   Descrição: <span>{product.description}</span>
                 </p>
                 <p>
+                  Preço: <span>{product.price}</span>
+                </p>
+                <p>
                   Quantidade: <span>{product.amount}</span>
                 </p>
                 <p>
-                  Preço: <span>{product.price}</span>
+                  Total: <span>{product.total}</span>
                 </p>
               </div>
             ))}

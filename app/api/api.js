@@ -1,5 +1,6 @@
 const express = require("express");
 const conn = require("./db/conn");
+const bcrypt = require("bcrypt");
 const cors = require("cors");
 const getUserByToken = require("./helpers/get-user-by-token");
 const getToken = require("./helpers/get-token");
@@ -11,7 +12,7 @@ const Temporary = require("./models/Temporary");
 const Caixa = require("./models/Caixa");
 
 const app = express();
-app.use(cors({ credentials: true, origin: "http://54.209.185.105:3000" }));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 conn("Caixa");
 
@@ -22,6 +23,19 @@ const Users = require("./models/User");
 app.use("/users", UserRoutes);
 
 // other routes
+
+app.post("/auth", async (req, res) => {
+  const password = req.body.password;
+  const token = getToken(req);
+  const user = await getUserByToken(token);
+
+  if (!user) {
+    return res.status(401).json({ message: "acesso negado" });
+  }
+  const checkPassword = await bcrypt.compare(password, user.password);
+
+  res.send(checkPassword);
+});
 
 app.post("/cad", async (req, res) => {
   const token = getToken(req);
@@ -102,6 +116,20 @@ app.post("/find", async (req, res) => {
   }
 
   res.send(founded);
+});
+
+app.patch("/estoque", async (req, res) => {
+  const list = req.body;
+
+  list.map(async (item) => {
+    const itemNow = await Products.findOne({ _id: item._id });
+
+    itemNow.amount = itemNow.amount - parseFloat(item.amount);
+
+    await Products.findByIdAndUpdate({ _id: item._id }, itemNow);
+  });
+
+  res.send("ok");
 });
 
 app.get("/temp", async (req, res) => {

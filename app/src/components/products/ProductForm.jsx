@@ -45,10 +45,18 @@ function ProductForm({ handleSubmit, data }) {
       <InputRequired
         type="number"
         name="price"
-        text="Valor"
+        text="Preço"
         placeholder="Insira a valor do produto"
         handleOnChange={handleChange}
-        value={products.price ? products.price : ""}
+        value={products.price ? products.price.toFixed(2) : ""}
+      />
+      <InputRequired
+        type="number"
+        name="amount"
+        text="Quantidade"
+        placeholder="Insira a quantidade do produto"
+        handleOnChange={handleChange}
+        value={products.amount ? products.amount : ""}
       />
       <div className={styles.form_buttons}>
         <SubmitButton text="Salvar" />

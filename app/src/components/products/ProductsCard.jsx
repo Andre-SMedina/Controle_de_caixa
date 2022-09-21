@@ -25,6 +25,10 @@ function ProductsCard({ product, handleEdit, handleRemove }) {
           {parseFloat(product.price).toFixed(2)}
         </p>
         <p>
+          <span>Quantidade: </span>
+          {product.amount}
+        </p>
+        <p>
           <span>Código: </span>
           {product.cod}
         </p>

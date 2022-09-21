@@ -1,0 +1,24 @@
+.container {
+  text-align: center;
+  position: absolute;
+  top: calc(50% - 75px);
+  left: calc(50% - 170px);
+  width: 340px;
+  height: 150px;
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px solid rgb(0, 47, 255);
+  color: rgb(1, 1, 180);
+  background-color: rgb(254, 238, 138);
+  z-index: 999;
+}
+.container div {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 15px;
+}
+.container input {
+  background-color: red;
+  color: white;
+}

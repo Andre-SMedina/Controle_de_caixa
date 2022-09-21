@@ -9,6 +9,8 @@ import ProductsCard from "../products/ProductsCard";
 import Message from "../layout/Message";
 import ProductForm from "../products/ProductForm";
 import api from "../../utils/api";
+import ProductFormAuth from "../products/ProductFormAuth";
+import Confirm from "../layout/Confirm";
 
 function Products() {
   //mostra o formulário para cadastrar um produto
@@ -21,6 +23,18 @@ function Products() {
   const [findResult, setFindResult] = useState([]);
   const [message, setMessage] = useState("");
   const [type, setType] = useState("");
+  const [auth, setAuth] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [removeId, setRemoveId] = useState("");
+
+  async function verifyAuth(password) {
+    const response = (await api.post("/auth", password)).data;
+    if (response) {
+      setAuth(true);
+    } else {
+      Messages(setMessage, "Senha incorreta!", setType, "error");
+    }
+  }
 
   function toggleRegister() {
     setShowRegister(!showRegister);
@@ -63,26 +77,49 @@ function Products() {
   }
 
   async function editCardPost(product) {
-    await api.patch("/edit", product);
+    const edit = await api.patch("/edit", product);
+
+    console.log(edit);
 
     Messages(setMessage, "Produto alterado com sucesso!", setType, "success");
+    setShowEdit(false);
+  }
+
+  async function confirm(response) {
+    setShowConfirm(true);
+    if (response === "sim") {
+      setShowConfirm(false);
+      const products = await api.delete(`/delete/${removeId}`);
+
+      setFindResult(products.data);
+      setShowFindResult(true);
+    } else if (response === "nao") {
+      setShowConfirm(false);
+    }
   }
 
   async function remove(id) {
-    const products = await api.delete(`/delete/${id}`);
-
-    setFindResult(products.data);
-    setShowFindResult(true);
+    setRemoveId(id);
+    confirm();
   }
 
   return (
     <div className={styles.products_container}>
       {message && <Message type={type} text={message} />}
+      {showConfirm && (
+        <Confirm text={"Deseja realmente apagar?"} handleClick={confirm} />
+      )}
       <h1>Produtos</h1>
-      <div className={styles.products_buttons}>
-        <Button handleOnClick={toggleRegister} text="Cadastrar" />
-        <Button handleOnClick={toggleFind} text="Encontrar" />
-      </div>
+      {auth ? (
+        <div className={styles.products_buttons}>
+          <Button handleOnClick={toggleRegister} text="Cadastrar" />
+          <Button handleOnClick={toggleFind} text="Encontrar" />
+        </div>
+      ) : (
+        <div className={styles.products_buttons}>
+          <ProductFormAuth handleSubmit={verifyAuth} />
+        </div>
+      )}
       <div className={styles.products_forms}>
         {showRegister && <ProductsForm handleSubmit={createPost} />}
         {showFind && <ProductsFormFind handleSubmit={find} />}

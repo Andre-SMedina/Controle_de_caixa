@@ -52,6 +52,14 @@ function ProductsForm({ handleSubmit }) {
       />
       <InputRequired
         type="number"
+        name="amount"
+        text="Quantidade"
+        placeholder="Insira a quantidade do produto"
+        handleOnChange={handleChange}
+        value={products.amount ? products.amount : ""}
+      />
+      <InputRequired
+        type="number"
         name="price"
         text="Valor"
         placeholder="Insira a valor do produto"

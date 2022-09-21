@@ -7,7 +7,7 @@
   align-items: flex-end;
   padding: 2px 5px;
   background-color: rgb(53, 53, 113);
-  width: 710px;
+  width: 790px;
   position: relative;
 }
 .card_list p {
@@ -28,10 +28,14 @@
 .product_brand {
   width: 130px;
 }
+.product_price {
+  width: 80px;
+  /* background-color: aqua; */
+}
 .product_amount {
   width: 80px;
 }
-.card_list p.product_price {
+.card_list p.product_total {
   text-align: center;
   width: 50px;
 }

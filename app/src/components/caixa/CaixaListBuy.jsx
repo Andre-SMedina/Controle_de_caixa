@@ -14,8 +14,9 @@ function CaixaListBuy({ product, handleOnRemove }) {
           <p className={styles.product_name}>{product.name}</p>
           <p className={styles.product_description}>{product.description}</p>
           <p className={styles.product_brand}>{product.brand}</p>
-          <p className={styles.product_amount}>{product.amount}</p>
           <p className={styles.product_price}>{product.price}</p>
+          <p className={styles.product_amount}>{product.amount}</p>
+          <p className={styles.product_total}>{product.total}</p>
           <span onClick={remove}>
             <BsFillTrashFill />
           </span>

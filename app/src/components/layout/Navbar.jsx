@@ -1,16 +1,31 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { Context } from "../../context/UserContext";
 import styles from "./Navbar.module.css";
 import logo from "../../img/logo.png";
 import Button from "../layout/Button";
+import Confirm from "./Confirm";
 
 function Navbar() {
   const { authenticated, logout } = useContext(Context);
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  function exit(response) {
+    setShowConfirm(true);
+    if (response === "sim") {
+      logout();
+      setShowConfirm(false);
+    } else if (response === "nao") {
+      setShowConfirm(false);
+    }
+  }
 
   return (
     <nav className={styles.navbar}>
+      {showConfirm && (
+        <Confirm text={"Deseja realmente sair?"} handleClick={exit} />
+      )}
       <Link to="/">
         <img src={logo} alt="" />
       </Link>
@@ -28,7 +43,7 @@ function Navbar() {
           <Link to="/balanco">
             <li>Balanço</li>
           </Link>
-          <Button text="Sair" handleOnClick={logout} />
+          <Button text="Sair" handleOnClick={exit} />
         </ul>
       ) : (
         <ul>

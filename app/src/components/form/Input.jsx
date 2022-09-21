@@ -8,6 +8,7 @@ function Input({
   handleOnChange,
   value,
   myFocus,
+  idFocus,
 }) {
   return (
     <div className={styles.input_container}>
@@ -19,6 +20,7 @@ function Input({
         onChange={handleOnChange}
         value={value}
         autoFocus={myFocus}
+        id={idFocus}
       />
     </div>
   );

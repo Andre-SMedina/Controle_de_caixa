@@ -20,9 +20,6 @@ function Caixa() {
 
   useEffect(() => {
     async function apiGet() {
-      // api.defaults.headers.Authorization = `Bearer ${JSON.parse(
-      //   localStorage.getItem("token")
-      // )}`;
       const data = (await api.get(`/temp`)).data;
 
       setListBuy(data.listBuy);
@@ -32,42 +29,44 @@ function Caixa() {
     apiGet();
   }, []);
 
-  async function submit(cod, fraction, amount) {
+  async function submit(cod, amount) {
     const finded = (await api.post(`/find`, { cod })).data;
 
     if ((finded.length > 1) | (finded.length < 1)) {
+      document.querySelector("#focus").focus();
       Messages(setMessage, "Produto não encontrado!", setType, "error");
       return;
     }
+    document.querySelector("#focus").focus();
+
     const item = finded[0];
+    console.log(item);
 
     item.price = item.price.toFixed(2);
 
-    if (fraction) {
-      item.price = (parseFloat(item.price) * parseFloat(fraction)).toFixed(2);
-    }
     if (amount) {
-      item.price = (parseFloat(item.price) * parseFloat(amount)).toFixed(2);
+      item.total = (parseFloat(item.price) * parseFloat(amount)).toFixed(2);
       item.amount = amount;
     } else {
+      item.total = item.price;
       item.amount = 1;
     }
+    console.log(item);
 
     // setUid(uuid);
     item.uid = generate();
 
-    const price = (parseFloat(item.price) + parseFloat(total)).toFixed(2);
-
-    setTotal(price);
+    const newTotal = (parseFloat(item.total) + parseFloat(total)).toFixed(2);
+    setTotal(newTotal);
     setListBuy([...listBuy, item]);
 
     //table caixa
     const list = (await api.get(`/temp`)).data;
     list.listBuy.push(item);
-    list.total = price;
-    const newList = list;
+    list.total = newTotal;
+    // const newList = list;
 
-    await api.patch("/temp", newList);
+    await api.patch("/temp", list);
   }
 
   async function finishedBuy(payment) {
@@ -106,16 +105,19 @@ function Caixa() {
     setListBuy([]);
     setTotal(0);
 
+    //alterar estoque
+    await api.patch("/estoque", list.listBuy);
+
     return Messages(setMessage, "Finalizado com sucesso!", setType, "success");
   }
 
   async function removeListProduct(uid2) {
-    let price = 0;
+    let newTotal = 0;
     const newList = listBuy.filter((item) => {
       if (item.uid === uid2) {
-        const sum = parseFloat(total) - parseFloat(item.price);
-        price = sum.toFixed(2);
-        setTotal(price);
+        const sum = parseFloat(total) - parseFloat(item.total);
+        newTotal = sum.toFixed(2);
+        setTotal(newTotal);
       }
       return item.uid !== uid2;
     });
@@ -124,7 +126,7 @@ function Caixa() {
 
     const list = (await api.get(`/temp`)).data;
     list.listBuy = newList;
-    list.total = price;
+    list.total = newTotal;
 
     await api.patch("/temp", list);
   }
@@ -162,8 +164,9 @@ function Caixa() {
           <h3 className={styles.list_buy_tittle_product}>Produto</h3>
           <h3 className={styles.list_buy_tittle_description}>Descrição</h3>
           <h3 className={styles.list_buy_tittle_brand}>Marca</h3>
-          <h3 className={styles.list_buy_tittle_amount}>Qtd</h3>
           <h3 className={styles.list_buy_tittle_price}>Preço</h3>
+          <h3 className={styles.list_buy_tittle_amount}>Qtd</h3>
+          <h3 className={styles.list_buy_tittle_total}>Total</h3>
           <span onClick={clearList}>
             <BsFillTrashFill />
           </span>
@@ -213,7 +216,10 @@ function Caixa() {
                 Descrição: <span>{product.description}</span>
               </p>
               <p>
-                Preço: <span>{product.price}</span>
+                Quantidade: <span>{product.amount}</span>
+              </p>
+              <p>
+                Preço: <span>{product.price.toFixed(2)}</span>
               </p>
               <p>
                 Cod. <span>{product.cod}</span>
