@@ -12,7 +12,7 @@ const Temporary = require("./models/Temporary");
 const Caixa = require("./models/Caixa");
 
 const app = express();
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: process.env.REACT_APP_CORS }));
 app.use(express.json());
 conn("Caixa");
 
