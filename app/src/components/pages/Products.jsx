@@ -79,8 +79,6 @@ function Products() {
   async function editCardPost(product) {
     const edit = await api.patch("/edit", product);
 
-    console.log(edit);
-
     Messages(setMessage, "Produto alterado com sucesso!", setType, "success");
     setShowEdit(false);
   }

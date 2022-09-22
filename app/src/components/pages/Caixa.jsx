@@ -40,7 +40,6 @@ function Caixa() {
     document.querySelector("#focus").focus();
 
     const item = finded[0];
-    console.log(item);
 
     item.price = item.price.toFixed(2);
 
@@ -51,7 +50,6 @@ function Caixa() {
       item.total = item.price;
       item.amount = 1;
     }
-    console.log(item);
 
     // setUid(uuid);
     item.uid = generate();

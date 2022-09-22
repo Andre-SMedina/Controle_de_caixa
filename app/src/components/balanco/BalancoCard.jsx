@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./BalancoCard.module.css";
 import BalancoDelete from "./BalancoDelete";
 
-function BalancoCard({ solds, handleDelete }) {
+function BalancoCard({ solds, total, handleDelete }) {
   const [showList, setShowList] = useState(false);
   const [products, setProducts] = useState([]);
 
@@ -27,6 +27,7 @@ function BalancoCard({ solds, handleDelete }) {
 
   return (
     <div className={styles.container}>
+      <h2>Total geral: R$ {total}</h2>
       {solds.map((sold) => (
         <div className={styles.cards} key={sold._id}>
           <h3 onClick={details} id={sold._id}>

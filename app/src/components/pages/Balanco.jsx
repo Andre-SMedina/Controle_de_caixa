@@ -11,6 +11,7 @@ import Message from "../layout/Message";
 function Balanco() {
   const [showCard, setShowCard] = useState(false);
   const [data, setData] = useState([]);
+  const [total, setTotal] = useState("");
   const [auth, setAuth] = useState(false);
   const [message, setMessage] = useState("");
   const [type, setType] = useState("");
@@ -25,6 +26,11 @@ function Balanco() {
   }
 
   function findResult(result) {
+    let subTotal = 0;
+    result.forEach((e) => {
+      subTotal += parseFloat(e.total);
+    });
+    setTotal(subTotal.toFixed(2));
     setData(result);
     setShowCard(true);
   }
@@ -42,7 +48,9 @@ function Balanco() {
           <h2>Pesquisar: </h2>
           <BalancoForm handleSubmit={findResult} />
           <div className={styles.find_card}>
-            {showCard && <BalancoCard solds={data} handleDelete={remove} />}
+            {showCard && (
+              <BalancoCard solds={data} total={total} handleDelete={remove} />
+            )}
           </div>
         </>
       ) : (

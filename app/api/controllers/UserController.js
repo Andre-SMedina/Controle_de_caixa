@@ -1,7 +1,8 @@
 const Users = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const getUserByToken = require("../helpers/get-user-by-token");
+const getToken = require("../helpers/get-token");
 //import helpers
 const createUserToken = require("../helpers/create-user-token");
 
@@ -71,6 +72,25 @@ class UserController {
     }
 
     await createUserToken(user, req, res);
+  }
+
+  static async changePass(req, res) {
+    const { oldPass, newPass } = req.body;
+    const token = getToken(req);
+    const user = await getUserByToken(token);
+
+    const checkPassword = await bcrypt.compare(oldPass, user.password);
+
+    if (checkPassword) {
+      const salt = await bcrypt.genSalt(12);
+      const passwordHash = await bcrypt.hash(newPass, salt);
+      await Users.findByIdAndUpdate(
+        { _id: user._id },
+        { password: passwordHash }
+      );
+    }
+
+    res.send(checkPassword);
   }
 }
 

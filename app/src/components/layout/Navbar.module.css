@@ -13,7 +13,7 @@
 }
 .navbar ul {
   display: flex;
-  gap: 10px;
+  gap: 7px;
 }
 .navbar li {
   background-color: rgb(108, 19, 192);
@@ -37,4 +37,71 @@
 }
 .navbar input:hover {
   background-color: rgb(215, 62, 62);
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  top: 110px;
+  right: 20px;
+  cursor: pointer;
+  width: 50px;
+}
+.menu li {
+  padding: 5px 0 1px;
+}
+.menu svg {
+  font-size: 1.5em;
+}
+.menu:hover .submenu {
+  opacity: 100%;
+  height: 70px;
+}
+.submenu {
+  overflow: hidden;
+  position: absolute;
+  right: 0px;
+  top: 45px;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  height: 0;
+  opacity: 0;
+  transition: 0.7s;
+}
+.change_password {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: absolute;
+  top: 240px;
+  right: 20px;
+}
+.change_password input {
+  background-color: white;
+  color: black;
+}
+.change_password input[type="password"]:hover {
+  background-color: white;
+}
+.change_password input[type="button"] {
+  background-color: rgb(108, 19, 192);
+  color: white;
+}
+.change_password input[type="button"]:hover {
+  background-color: hsl(271, 82%, 56%);
+}
+.change_password span {
+  position: absolute;
+  right: 6px;
+  top: -20px;
+  background-color: red;
+  padding: 3px 5px 1px 5px;
+  border-radius: 50%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.change_password span:hover {
+  background-color: hsl(0, 100%, 35%);
 }
