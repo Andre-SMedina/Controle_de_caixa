@@ -10,7 +10,7 @@ do
         'c') opcao_C=1 ;;
         'd') opcao_D=1 ;;
         'e') opcao_E=1 ;;
-        'e') opcao_H=1 ;;
+        'h') opcao_H=1 ;;
     esac
 done
 
