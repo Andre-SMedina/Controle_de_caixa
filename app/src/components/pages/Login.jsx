@@ -16,6 +16,7 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     const response = await login(user);
+    console.log("oi", response);
     if (response) {
       Messages(setMessage, response, setType, "error");
     }

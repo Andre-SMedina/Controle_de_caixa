@@ -5,6 +5,7 @@ import api from "../utils/api";
 
 export default function useAuth() {
   const [authenticated, setAuthenticated] = useState(false);
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
   //quando recarrega a página mantem logado
@@ -42,6 +43,7 @@ export default function useAuth() {
 
   function logout() {
     setAuthenticated(false);
+    setUserName("");
     localStorage.removeItem("token");
     api.defaults.headers.Authorization = undefined;
     navigate("/");
@@ -50,9 +52,10 @@ export default function useAuth() {
   async function authUser(data) {
     api.defaults.headers.Authorization = `Bearer ${data.token}`;
     setAuthenticated(true);
+    setUserName(data.name);
     localStorage.setItem("token", JSON.stringify(data.token));
     navigate("/");
   }
 
-  return { authenticated, register, login, logout };
+  return { userName, authenticated, register, login, logout };
 }
